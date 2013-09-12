@@ -1,13 +1,13 @@
 <?php
 
-use Kassner\ApacheLog\Parser;
+use Kassner\ApacheLogParser\ApacheLogParser;
 
 class ApacheCommomTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFormat()
     {
-        $parser = new Parser("%h %l %u %t \"%r\" %>s %O");
+        $parser = new ApacheLogParser("%h %l %u %t \"%r\" %>s %O");
         
         $entry = $parser->parse('177.3.137.13 - - [11/Sep/2013:22:46:30 +0000] "GET / HTTP/1.1" 200 9726');
         $this->assertEquals('177.3.137.13', $entry->host);

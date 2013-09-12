@@ -1,13 +1,13 @@
 <?php
 
-use Kassner\ApacheLog\Parser;
+use Kassner\ApacheLogParser\ApacheLogParser;
 
 class ApacheAgentTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFormat()
     {
-        $parser = new Parser("%{User-agent}i");
+        $parser = new ApacheLogParser("%{User-agent}i");
 
         $entry = $parser->parse('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36');
         $this->assertEquals('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36', $entry->HeaderUseragent);

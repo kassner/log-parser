@@ -1,27 +1,27 @@
 <?php
 
-use Kassner\ApacheLog\Parser;
+use Kassner\ApacheLogParser\ApacheLogParser;
 
 class FormatsTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testRemoteIpFormat()
     {
-        $parser = new Parser('%a');
+        $parser = new ApacheLogParser('%a');
         $entry = $parser->parse('192.168.1.2');
         $this->assertEquals('192.168.1.2', $entry->remoteIp);
     }
 
     public function testLocalIpFormat()
     {
-        $parser = new Parser('%A');
+        $parser = new ApacheLogParser('%A');
         $entry = $parser->parse('127.0.0.1');
         $this->assertEquals('127.0.0.1', $entry->localIp);
     }
 
     public function testServerName()
     {
-        $parser = new Parser('%v');
+        $parser = new ApacheLogParser('%v');
 
         $entry = $parser->parse('localhost');
         $this->assertEquals('localhost', $entry->serverName);
