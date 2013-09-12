@@ -1,5 +1,7 @@
 <?php
 
+namespace Kassner\Tests\ApacheLogParser;
+
 use Kassner\ApacheLogParser\ApacheLogParser;
 
 class ApacheRefererTest extends \PHPUnit_Framework_TestCase
