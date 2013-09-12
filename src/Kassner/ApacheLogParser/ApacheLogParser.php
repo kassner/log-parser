@@ -23,7 +23,14 @@ class ApacheLogParser
         '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.+?)',
     );
 
-    public function __construct($format)
+    public function __construct($format = null)
+    {
+        if (!is_null($format)) {
+            $this->setFormat($format);
+        }
+    }
+
+    public function setFormat($format)
     {
         $this->format = $format;
         $this->buildPcreFormat();
