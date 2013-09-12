@@ -1,5 +1,4 @@
 # Apache Log Parser
-===================
 
 PHP Apache Log Parser Library
 
