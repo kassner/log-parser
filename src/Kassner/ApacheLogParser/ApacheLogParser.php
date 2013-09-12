@@ -1,8 +1,8 @@
 <?php
 
-namespace Kassner\ApacheLog;
+namespace Kassner\ApacheLogParser;
 
-class Parser
+class ApacheLogParser
 {
 
     private $format;
