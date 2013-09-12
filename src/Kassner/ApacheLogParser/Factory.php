@@ -4,7 +4,7 @@ namespace Kassner\ApacheLogParser;
 
 class Factory
 {
-    public function create()
+    public static function create()
     {
         return new ApacheLogParser();
     }
