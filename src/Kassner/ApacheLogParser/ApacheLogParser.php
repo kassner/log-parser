@@ -10,17 +10,17 @@ class ApacheLogParser
     private $patterns = array(
         '%a' => '(?P<remoteIp>\d+\.\d+\.\d+\.\d+)',
         '%A' => '(?P<localIp>\d+\.\d+\.\d+\.\d+)',
-        '%v' => '(?P<serverName>[a-z0-9.-]*)',
         '%h' => '(?P<host>\d+\.\d+\.\d+\.\d+)',
+        '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.+?)',
         '%l' => '(?P<logname>(?:-|\w+))',
-        '%u' => '(?P<user>(?:-|\w+))',
-        '%t' => '\[(?P<time>\d{2}/(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/\d{4}:\d{2}:\d{2}:\d{2} (?:-|\+)\d{4})\]',
         '%p' => '(?P<port>\d+)',
         '%r' => '(?P<request>(?:(?:[A-Z]+) .+? HTTP/1.(?:0|1))|-)',
+        '%t' => '\[(?P<time>\d{2}/(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/\d{4}:\d{2}:\d{2}:\d{2} (?:-|\+)\d{4})\]',
+        '%u' => '(?P<user>(?:-|\w+))',
+        '%U' => '(?P<URL>.+?)',
+        '%v' => '(?P<serverName>[a-z0-9.-]*)',
         '%>s' => '(?P<status>\d{3}|-)',
         '%O' => '(?P<sentBytes>\d+)',
-        '%U' => '(?P<URL>.+?)',
-        '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.+?)',
     );
 
     public function __construct($format = null)
