@@ -45,6 +45,7 @@ class BytesSentTest extends \PHPUnit_Framework_TestCase
     public function successProvider()
     {
         return array(
+            array('1'),
             array('1234'),
             array('99999999')
         );
@@ -53,6 +54,7 @@ class BytesSentTest extends \PHPUnit_Framework_TestCase
     public function invalidProvider()
     {
         return array(
+            array('0'),
             array('dummy 1234'),
             array('lala'),
             array('-')
