@@ -1,10 +1,10 @@
 <?php
 
-namespace Kassner\Tests\ApacheLogParser;
+namespace Kassner\Tests\ApacheLogParser\Apache;
 
 use Kassner\ApacheLogParser\ApacheLogParser;
 
-class ApacheAgentTest extends \PHPUnit_Framework_TestCase
+class AgentTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFormat()
