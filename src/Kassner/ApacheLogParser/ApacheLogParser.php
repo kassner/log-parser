@@ -8,6 +8,7 @@ class ApacheLogParser
     private $format;
     private $pcreFormat;
     private $patterns = array(
+        '%%' => '(?P<percent>\%)',
         '%a' => '(?P<remoteIp>\d+\.\d+\.\d+\.\d+)',
         '%A' => '(?P<localIp>\d+\.\d+\.\d+\.\d+)',
         '%h' => '(?P<host>\d+\.\d+\.\d+\.\d+)',
