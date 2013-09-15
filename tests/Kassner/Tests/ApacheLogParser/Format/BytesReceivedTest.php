@@ -5,10 +5,10 @@ namespace Kassner\Tests\ApacheLogParser\Format;
 use Kassner\ApacheLogParser\ApacheLogParser;
 
 /**
- * @format %O
- * @description Bytes sent, including headers, cannot be zero. You need to enable mod_logio to use this.
+ * @format %I
+ * @description Bytes received, including request and headers, cannot be zero. You need to enable mod_logio to use this.
  */
-class BytesSentTest extends \PHPUnit_Framework_TestCase
+class BytesReceivedTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $parser = null;
@@ -16,7 +16,7 @@ class BytesSentTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->parser = new ApacheLogParser();
-        $this->parser->setFormat('%O');
+        $this->parser->setFormat('%I');
     }
 
     protected function tearDown()
@@ -30,7 +30,7 @@ class BytesSentTest extends \PHPUnit_Framework_TestCase
     public function testSuccess($line)
     {
         $entry = $this->parser->parse($line);
-        $this->assertEquals($line, $entry->sentBytes);
+        $this->assertEquals($line, $entry->receivedBytes);
     }
 
     /**

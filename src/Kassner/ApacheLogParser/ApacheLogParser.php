@@ -21,6 +21,7 @@ class ApacheLogParser
         '%v' => '(?P<serverName>[a-z0-9.-]*)',
         '%>s' => '(?P<status>\d{3}|-)',
         '%O' => '(?P<sentBytes>\d+)',
+        '%I' => '(?P<receivedBytes>\d+)',
     );
 
     public function __construct($format = null)
