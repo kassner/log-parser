@@ -41,7 +41,7 @@ class ApacheLogParser
     public function parse($line)
     {
         if (!preg_match($this->pcreFormat, $line, $matches)) {
-            throw new FormatException();
+            throw new FormatException($line);
         }
 
         $entry = new \stdClass();
