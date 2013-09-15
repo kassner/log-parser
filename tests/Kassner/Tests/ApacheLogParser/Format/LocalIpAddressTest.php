@@ -46,6 +46,7 @@ class LocalIpAddressTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('192.168.1.1'),
+            array('192.168.001.01'),
             array('172.16.0.1'),
             array('192.168.0.255'),
             array('8.8.8.8'),
@@ -61,6 +62,7 @@ class LocalIpAddressTest extends \PHPUnit_Framework_TestCase
             // over 255
             array('192.168.1.256'),
             array('256.256.256.256'),
+            array('321.432.543.654'),
             // incomplete
             array('192.168.1.'),
             array('192.168.1'),
