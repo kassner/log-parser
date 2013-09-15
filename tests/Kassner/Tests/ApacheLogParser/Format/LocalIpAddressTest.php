@@ -30,7 +30,7 @@ class LocalIpAddressTest extends \PHPUnit_Framework_TestCase
     public function testSuccess($line)
     {
         $entry = $this->parser->parse($line);
-        $this->assertEquals($line, $entry->remoteIp);
+        $this->assertEquals($line, $entry->localIp);
     }
 
     /**
