@@ -20,8 +20,8 @@ class ApacheLogParser
         '%U' => '(?P<URL>.+?)',
         '%v' => '(?P<serverName>[a-z0-9.-]*)',
         '%>s' => '(?P<status>\d{3}|-)',
-        '%O' => '(?P<sentBytes>\d+)',
-        '%I' => '(?P<receivedBytes>\d+)',
+        '%O' => '(?P<sentBytes>[1-9][0-9]*)',
+        '%I' => '(?P<receivedBytes>[1-9][0-9]*)',
     );
 
     public function __construct($format = null)
