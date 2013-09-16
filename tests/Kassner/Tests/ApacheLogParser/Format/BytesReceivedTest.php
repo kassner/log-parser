@@ -3,12 +3,13 @@
 namespace Kassner\Tests\ApacheLogParser\Format;
 
 use Kassner\ApacheLogParser\ApacheLogParser;
+use Kassner\Tests\ApacheLogParser\Provider\NonZeroPositiveInteger as NonZeroPositiveIntegerProvider;
 
 /**
  * @format %I
  * @description Bytes received, including request and headers, cannot be zero. You need to enable mod_logio to use this.
  */
-class BytesReceivedTest extends \PHPUnit_Framework_TestCase
+class BytesReceivedTest extends NonZeroPositiveIntegerProvider
 {
 
     protected $parser = null;
@@ -40,25 +41,6 @@ class BytesReceivedTest extends \PHPUnit_Framework_TestCase
     public function testInvalid($line)
     {
         $this->parser->parse($line);
-    }
-
-    public function successProvider()
-    {
-        return array(
-            array('1'),
-            array('1234'),
-            array('99999999')
-        );
-    }
-
-    public function invalidProvider()
-    {
-        return array(
-            array('0'),
-            array('dummy 1234'),
-            array('lala'),
-            array('-')
-        );
     }
 
 }
