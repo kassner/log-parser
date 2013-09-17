@@ -20,6 +20,7 @@ class ApacheLogParser
         '%u' => '(?P<user>(?:-|\w+))',
         '%U' => '(?P<URL>.+?)',
         '%v' => '(?P<serverName>[a-z0-9.-]*)',
+        '%V' => '(?P<canonicalServerName>[a-z0-9.-]*)',
         '%>s' => '(?P<status>\d{3}|-)',
         '%O' => '(?P<sentBytes>[1-9][0-9]*)',
         '%I' => '(?P<receivedBytes>[1-9][0-9]*)',
