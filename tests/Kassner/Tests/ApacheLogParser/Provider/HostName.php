@@ -20,15 +20,10 @@ class HostName extends \PHPUnit_Framework_TestCase
     public function invalidProvider()
     {
         return array(
-            /** @TODO validate a few more */
-            array('.php.net'),
-            array('-php.net'),
-            array('php-.net'),
-            array('php..net'),
-            array('php.-net'),
-            array('php.net.'),
-            array('php.net-'),
-            array('www.this-seems-a-valid-host-name-but-it-is-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-very-big-that-is-invalid-because-have-more-than-two-hundred-and-fifty-five-character-on-it.com')
+            array(''),
+            /** @TODO check for invalid apache hostnames. In fact, there are many hostnames that are
+                      invalid on an internet environment, but it could be assigned a valid hostname
+                      on local DNS servers and apache VirtualHost directive */
         );
     }
 
