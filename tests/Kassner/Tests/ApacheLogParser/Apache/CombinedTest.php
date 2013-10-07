@@ -43,6 +43,17 @@ class CombinedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('1041', $entry->sentBytes);
         $this->assertEquals('-', $entry->HeaderReferer);
         $this->assertEquals('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)', $entry->HeaderUserAgent);
+
+        $entry = $parser->parse('177.3.137.13 - - [11/Sep/2013:19:22:43 +0000] "-" 408 0 "-" "-"');
+        $this->assertEquals('177.3.137.13', $entry->host);
+        $this->assertEquals('-', $entry->logname);
+        $this->assertEquals('-', $entry->user);
+        $this->assertEquals('11/Sep/2013:19:22:43 +0000', $entry->time);
+        $this->assertEquals('-', $entry->request);
+        $this->assertEquals('408', $entry->status);
+        $this->assertEquals('0', $entry->sentBytes);
+        $this->assertEquals('-', $entry->HeaderReferer);
+        $this->assertEquals('-', $entry->HeaderUserAgent);
     }
 
 }

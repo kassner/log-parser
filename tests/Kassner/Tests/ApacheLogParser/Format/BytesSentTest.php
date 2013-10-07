@@ -3,13 +3,13 @@
 namespace Kassner\Tests\ApacheLogParser\Format;
 
 use Kassner\ApacheLogParser\ApacheLogParser;
-use Kassner\Tests\ApacheLogParser\Provider\NonZeroPositiveInteger as NonZeroPositiveIntegerProvider;
+use Kassner\Tests\ApacheLogParser\Provider\PositiveInteger as PositiveIntegerProvider;
 
 /**
  * @format %O
  * @description Bytes sent, including headers, cannot be zero. You need to enable mod_logio to use this.
  */
-class BytesSentTest extends NonZeroPositiveIntegerProvider
+class BytesSentTest extends PositiveIntegerProvider
 {
 
     protected $parser = null;

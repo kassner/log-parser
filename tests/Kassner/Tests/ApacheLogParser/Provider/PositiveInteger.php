@@ -2,7 +2,7 @@
 
 namespace Kassner\Tests\ApacheLogParser\Provider;
 
-class NonZeroPositiveInteger extends \PHPUnit_Framework_TestCase
+class PositiveInteger extends \PHPUnit_Framework_TestCase
 {
 
     public function successProvider()
@@ -11,14 +11,14 @@ class NonZeroPositiveInteger extends \PHPUnit_Framework_TestCase
             array('1'),
             array('1234'),
             array('99999999'),
-            array('100000000000000000000000')
+            array('100000000000000000000000'),
+            array('0'),
         );
     }
 
     public function invalidProvider()
     {
         return array(
-            array('0'),
             array('-1'),
             array('dummy 1234'),
             array('lala'),
