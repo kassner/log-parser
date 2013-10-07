@@ -54,6 +54,20 @@ class CombinedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('0', $entry->sentBytes);
         $this->assertEquals('-', $entry->HeaderReferer);
         $this->assertEquals('-', $entry->HeaderUserAgent);
+
+        $entry = $parser->parse('54.232.125.255 - - [07/Oct/2013:04:14:01 +0000] "" 400 0 "-" "-"');
+        $this->assertEquals('54.232.125.255', $entry->host);
+        $this->assertEquals('-', $entry->logname);
+        $this->assertEquals('-', $entry->user);
+        $this->assertEquals('07/Oct/2013:04:14:01 +0000', $entry->time);
+        $this->assertEquals('', $entry->request);
+        $this->assertEquals('400', $entry->status);
+        $this->assertEquals('0', $entry->sentBytes);
+        $this->assertEquals('-', $entry->HeaderReferer);
+        $this->assertEquals('-', $entry->HeaderUserAgent);
+
+
+        
     }
 
 }
