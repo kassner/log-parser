@@ -41,6 +41,10 @@ class ApacheLogParser
         $this->buildPcreFormat();
     }
 
+    public function getPCRE() {
+        return((string) $this->pcreFormat);
+    }
+
     public function parse($line)
     {
         if (!preg_match($this->pcreFormat, $line, $matches)) {
@@ -52,6 +56,15 @@ class ApacheLogParser
         foreach ($matches as $key => $value) {
             if (is_numeric($key)) {
                 continue;
+            }
+
+            if ('time' == $key) {
+                $stamp = strtotime($value);
+                if (false === $stamp) {
+                    continue;
+                } else {
+                    $entry->stamp = $stamp;
+                }
             }
 
             $entry->{$key} = $value;
