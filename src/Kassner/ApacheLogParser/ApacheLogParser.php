@@ -61,6 +61,7 @@ class ApacheLogParser
             if ('time' == $key) {
                 $stamp = strtotime($value);
                 if (false === $stamp) {
+                    $entry->{$key} = $value;
                     continue;
                 } else {
                     $entry->stamp = $stamp;
