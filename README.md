@@ -55,7 +55,7 @@ $parser->setFormat('%h %l %u %t "%r" %>s %O "%{Referer}i" \"%{User-Agent}i"');
 Here is the list of format strings currently supported :
 
 | Format String | Description |
-| -- | ------- |
+|----|---------|
 | %% | percent |
 | %a | remoteIp |
 | %A | localIp |
