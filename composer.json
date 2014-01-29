@@ -1,9 +1,9 @@
 {
-    "name": "kassner/apache-log-parser",
+    "name": "kassner/log-parser",
     "type": "library",
-    "description": "PHP Apache Log Parser Library",
-    "keywords": ["log","apache","parser"],
-    "homepage": "http://github.com/kassner/apache-log-parser",
+    "description": "PHP Log Parser Library",
+    "keywords": ["log","apache","parser", "nginx", "format", "log-format"],
+    "homepage": "http://github.com/kassner/log-parser",
     "license": "Apache 2.0",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.4"
     },
     "autoload": {
         "psr-0": {
