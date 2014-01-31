@@ -1,6 +1,6 @@
 # Web server access Log Parser
 
-[![Build Status](https://travis-ci.org/kassner/apache-log-parser.png?branch=master)](https://travis-ci.org/kassner/apache-log-parser)
+[![Build Status](https://travis-ci.org/kassner/log-parser.png?branch=master)](https://travis-ci.org/kassner/log-parser)
 
 ## Install
 
