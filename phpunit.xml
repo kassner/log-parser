@@ -1,6 +1,6 @@
 <phpunit colors="true" verbose="true" bootstrap="tests/bootstrap.php">
     <testsuites>
-        <testsuite name="apache-log testsuite">
+        <testsuite name="log-parser testsuite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

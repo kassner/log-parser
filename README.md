@@ -7,7 +7,7 @@
 Using composer:
 
 ```
-php composer.phar require kassner/apache-log-parser:dev-master
+php composer.phar require kassner/log-parser:dev-master
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ php composer.phar require kassner/apache-log-parser:dev-master
 Simply instantiate the class :
 
 ```php
-$parser = new \Kassner\ApacheLogParser\ApacheLogParser();
+$parser = new \Kassner\LogParser\LogParser();
 ```
 
 And then parse the lines of your access log file :
@@ -95,4 +95,4 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 
 ## Exceptions
 
-If a line does not match with the defined format, an `\Kassner\ApacheLogParser\FormatException` will be thrown.
+If a line does not match with the defined format, an `\Kassner\LogParser\FormatException` will be thrown.
