@@ -1,8 +1,8 @@
 <?php
 
-namespace Kassner\Tests\ApacheLogParser\Format;
+namespace Kassner\Tests\LogParser\Format;
 
-use Kassner\ApacheLogParser\ApacheLogParser;
+use Kassner\LogParser\LogParser;
 
 /**
  * @format %m
@@ -15,7 +15,7 @@ class RequestMethodTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->parser = new ApacheLogParser();
+        $this->parser = new LogParser();
         $this->parser->setFormat('%m');
     }
 
@@ -34,7 +34,7 @@ class RequestMethodTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Kassner\ApacheLogParser\FormatException
+     * @expectedException \Kassner\LogParser\FormatException
      * @dataProvider invalidProvider
      */
     public function testInvalid($line)

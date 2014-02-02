@@ -7,4 +7,4 @@ php composer.phar install --dev
 ");
 }
 
-$loader->add('Kassner\\Tests\\ApacheLogParser', __DIR__);
+$loader->add('Kassner\\Tests\\LogParser', __DIR__);

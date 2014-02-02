@@ -1,15 +1,15 @@
 <?php
 
-namespace Kassner\Tests\ApacheLogParser\Apache;
+namespace Kassner\Tests\LogParser\Apache;
 
-use Kassner\ApacheLogParser\ApacheLogParser;
+use Kassner\LogParser\LogParser;
 
 class VhostCombinedTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFormat()
     {
-        $parser = new ApacheLogParser("%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"");
+        $parser = new LogParser("%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"");
 
         $entry = $parser->parse('ecommerce.dev:80 177.3.137.13 - - [11/Sep/2013:22:46:30 +0000] "GET / HTTP/1.1" 200 9726 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36"');
         $this->assertEquals('ecommerce.dev', $entry->serverName);

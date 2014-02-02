@@ -1,15 +1,15 @@
 <?php
 
-namespace Kassner\Teste\ApacheLogParser\Issue;
+namespace Kassner\Teste\LogParser\Issue;
 
-use Kassner\ApacheLogParser\ApacheLogParser;
+use Kassner\LogParser\LogParser;
 
 class Issue5Test extends \PHPUnit_Framework_TestCase
 {
 
     public function testReferersAndAgents()
     {
-        $parser = new ApacheLogParser("%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"");
+        $parser = new LogParser("%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"");
         $entry = $parser->parse('www.example.com:80 ::1 - - [27/Oct/2013:06:27:33 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.2.22 (Ubuntu) (internal dummy connection)"');
         $this->assertEquals('www.example.com', $entry->serverName);
         $this->assertEquals('80', $entry->port);

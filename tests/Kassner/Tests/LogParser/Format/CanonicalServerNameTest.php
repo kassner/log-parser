@@ -1,9 +1,9 @@
 <?php
 
-namespace Kassner\Tests\ApacheLogParser\Format;
+namespace Kassner\Tests\LogParser\Format;
 
-use Kassner\ApacheLogParser\ApacheLogParser;
-use Kassner\Tests\ApacheLogParser\Provider\HostName as HostNameProvider;
+use Kassner\LogParser\LogParser;
+use Kassner\Tests\LogParser\Provider\HostName as HostNameProvider;
 
 /**
  * @format %v
@@ -16,7 +16,7 @@ class CanonicalServerNameTest extends HostNameProvider
 
     protected function setUp()
     {
-        $this->parser = new ApacheLogParser();
+        $this->parser = new LogParser();
         $this->parser->setFormat('%V');
     }
 
@@ -35,7 +35,7 @@ class CanonicalServerNameTest extends HostNameProvider
     }
 
     /**
-     * @expectedException \Kassner\ApacheLogParser\FormatException
+     * @expectedException \Kassner\LogParser\FormatException
      * @dataProvider invalidProvider
      */
     public function testInvalid($line)

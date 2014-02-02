@@ -1,15 +1,15 @@
 <?php
 
-namespace Kassner\Tests\ApacheLogParser\Apache;
+namespace Kassner\Tests\LogParser\Apache;
 
-use Kassner\ApacheLogParser\ApacheLogParser;
+use Kassner\LogParser\LogParser;
 
 class RefererTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFormat()
     {
-        $parser = new ApacheLogParser("%{Referer}i -> %U");
+        $parser = new LogParser("%{Referer}i -> %U");
 
         $entry = $parser->parse('- -> /index.php');
         $this->assertEquals('/index.php', $entry->URL);
