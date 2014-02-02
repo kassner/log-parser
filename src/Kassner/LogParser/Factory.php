@@ -1,11 +1,11 @@
 <?php
 
-namespace Kassner\ApacheLogParser;
+namespace Kassner\LogParser;
 
 class Factory
 {
     public static function create()
     {
-        return new ApacheLogParser();
+        return new LogParser();
     }
 }

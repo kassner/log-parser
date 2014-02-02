@@ -1,8 +1,8 @@
 <?php
 
-namespace Kassner\ApacheLogParser;
+namespace Kassner\LogParser;
 
-class ApacheLogParser
+class LogParser
 {
     private $pcreFormat, $patterns = array(
         '%%'  => '(?P<percent>\%)',

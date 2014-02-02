@@ -1,6 +1,6 @@
 <?php
 
-namespace Kassner\ApacheLogParser;
+namespace Kassner\LogParser;
 
 class FormatException extends \Exception
 {
