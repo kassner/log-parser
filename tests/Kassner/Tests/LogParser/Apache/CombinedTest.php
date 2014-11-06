@@ -65,9 +65,6 @@ class CombinedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('0', $entry->sentBytes);
         $this->assertEquals('-', $entry->HeaderReferer);
         $this->assertEquals('-', $entry->HeaderUserAgent);
-
-
-        
     }
 
 }

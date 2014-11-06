@@ -15,7 +15,6 @@ class RefererTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/index.php', $entry->URL);
         $this->assertEquals('-', $entry->HeaderReferer);
 
-
         $entry = $parser->parse('http://ecommerce.dev/ -> /media/css/fe0e1ba295680ef4c59ccc987fca2371.css');
         $this->assertEquals('/media/css/fe0e1ba295680ef4c59ccc987fca2371.css', $entry->URL);
         $this->assertEquals('http://ecommerce.dev/', $entry->HeaderReferer);
