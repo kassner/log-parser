@@ -21,6 +21,7 @@ class LogParser
             '%V' => '(?P<canonicalServerName>([a-zA-Z0-9]+)([a-z0-9.-]*))',
             '%>s' => '(?P<status>\d{3}|-)',
             '%b' => '(?P<responseBytes>(\d+|-))',
+            '%T' => '(?P<requestTime>(\d+\.?\d*))',
             '%O' => '(?P<sentBytes>[0-9]+)',
             '%I' => '(?P<receivedBytes>[0-9]+)',
             '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.*?)',
