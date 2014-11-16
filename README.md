@@ -77,7 +77,7 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | Y | %r | request | First line of request |
 | N | %R | - | The handler generating the response (if any). |
 | N | %s | - | Status. For requests that got internally redirected, this is the status of the *original* request --- %>s for the last. |
-| N | %T | - | The time taken to serve the request, in seconds. |
+| X | %T | requestTime | The time taken to serve the request, in seconds. This option is not consistent, Apache won't inform the milisecond part. |
 | Y | %t | time | Time the request was received (standard english format) |
 | Y | %u | user | Remote user (from auth; may be bogus if return status (%s) is 401) |
 | Y | %U | URL | The URL path requested, not including any query string. |
@@ -92,6 +92,8 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | N | %{format}p | - | The canonical port of the server serving the request or the server's actual port or the client's actual port. Valid formats are canonical, local, or remote. |
 | N | %{format}P | - | The process ID or thread id of the child that serviced the request. Valid formats are pid, tid, and hextid. hextid requires APR 1.2.0 or higher. |
 | N | %{format}t | - | The time, in the form given by format, which should be in strftime(3) format. (potentially localized) (This directive was %c in late versions of Apache 1.3, but this conflicted with the historical ssl %{var}c syntax.) |
+
+> Beware: You should really read the notes when using a option that is marked with a `X` on the `Supported?` column.
 
 ## Exceptions
 
