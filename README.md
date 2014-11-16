@@ -7,7 +7,7 @@
 Using composer:
 
 ```
-php composer.phar require kassner/log-parser:dev-master
+php composer.phar require kassner/log-parser:~1.0
 ```
 
 ## Usage
