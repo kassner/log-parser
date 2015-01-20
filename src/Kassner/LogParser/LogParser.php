@@ -38,6 +38,11 @@ class LogParser
         $this->setFormat($format ?: self::getDefaultFormat());
     }
 
+    public function addPattern($placeholder, $pattern)
+    {
+        $this->patterns[$placeholder] = $pattern;
+    }
+
     public function setFormat($format)
     {
         // strtr won't work for "complex" header patterns
