@@ -4,7 +4,6 @@ namespace Kassner\LogParser;
 
 class LogParser
 {
-
     protected $pcreFormat, $patterns = array(
             '%%' => '(?P<percent>\%)',
             '%a' => '(?P<remoteIp>(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))',
@@ -27,9 +26,16 @@ class LogParser
             '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.*?)',
     );
 
-    public function __construct($format = '%h %l %u %t "%r" %>s %b')
+    static protected $defaultFormat = '%h %l %u %t "%r" %>s %b';
+
+    static public function getDefaultFormat()
     {
-        $this->setFormat($format);
+        return self::$defaultFormat;
+    }
+
+    public function __construct($format = null)
+    {
+        $this->setFormat($format ?: self::getDefaultFormat());
     }
 
     public function setFormat($format)
