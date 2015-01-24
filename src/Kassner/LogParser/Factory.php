@@ -7,7 +7,6 @@ class Factory
 
     public static function create()
     {
-        return new LogParser();
+        return new LogParser(LogParser::getDefaultFormat());
     }
-
 }
