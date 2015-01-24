@@ -41,7 +41,7 @@ class IpAddress extends \PHPUnit_Framework_TestCase
             array('....'),
             array('1.9.2.'),
             array('192.168.1.1/24'),
-            // letters (it' not supporting IPv6 yet...)
+            // letters (it's not supporting IPv6 yet...)
             array('abc'),
             array('192.168.1.x'),
             array('insert-ip-address-here'),
