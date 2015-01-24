@@ -24,6 +24,7 @@
     "require-dev": {
         "phpunit/phpunit": "~4.4",
         "sebastian/phpcpd": "~2.0",
-        "phpmd/phpmd": "~2.1"
+        "phpmd/phpmd": "~2.1",
+        "squizlabs/php_codesniffer": "~2.2"
     }
 }
