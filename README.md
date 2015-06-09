@@ -62,7 +62,7 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | Y | %a | remoteIp |Remote IP-address |
 | N | %B | - |Size of response in bytes, excluding HTTP headers. |
 | Y | %b | responseBytes |Size of response in bytes, excluding HTTP headers. In CLF format, i.e. a '-' rather than a 0 when no bytes are sent. |
-| N | %D | - | The time taken to serve the request, in microseconds. |
+| Y | %D | - | The time taken to serve the request, in microseconds. |
 | N | %f | - | Filename |
 | Y | %h | host |Remote host |
 | N | %H | - |The request protocol |
