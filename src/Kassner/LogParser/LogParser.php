@@ -13,7 +13,7 @@ class LogParser
         '%A' => '(?P<localIp>(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|([0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4}){7})|(([0-9A-Fa-f]{1,4})?(:[0-9A-Fa-f]{1,4}){0,7}:(:[0-9A-Fa-f]{1,4}){1,7}))',
         '%h' => '(?P<host>[a-zA-Z0-9\-\._:]+)',
         '%l' => '(?P<logname>(?:-|[\w-]+))',
-        '%m' => '(?P<requestMethod>OPTIONS|GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT|PATCH)',
+        '%m' => '(?P<requestMethod>OPTIONS|GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT|PATCH|PROPFIND)',
         '%p' => '(?P<port>\d+)',
         '%r' => '(?P<request>(?:(?:[A-Z]+) .+? HTTP/1.(?:0|1))|-|)',
         '%t' => '\[(?P<time>\d{2}/(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/\d{4}:\d{2}:\d{2}:\d{2} (?:-|\+)\d{4})\]',
