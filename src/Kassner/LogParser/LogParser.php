@@ -13,7 +13,7 @@ class LogParser
     protected $ipv6leading = '(::[0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6}))'; // ::1:1:1:1:1:1:1
     protected $ipv6mid = '(([0-9A-Fa-f]{1,4})?(:[0-9A-Fa-f]{1,4}){0,5}:(:[0-9A-Fa-f]{1,4}){1,6}))'; // 1:1:1::1:1:1
     protected $ipv6trailing = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6}))::'; // 1:1:1:1:1:1:1::
-    protected $ip = join('|', array($ipv4, $ipv6full, $ipv6null, $ipv6leading, $ipv6mid, $ipv6trailing);
+    protected $ip = join('|', array($ipv4, $ipv6full, $ipv6null, $ipv6leading, $ipv6mid, $ipv6trailing));
     protected $patterns = array(
         '%%' => '(?P<percent>\%)',
         '%a' => '(?P<remoteIp>' . $ip . ')',
