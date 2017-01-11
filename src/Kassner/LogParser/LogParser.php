@@ -8,10 +8,10 @@ class LogParser
     static protected $defaultFormat = '%h %l %u %t "%r" %>s %b';
     protected $pcreFormat;
     protected $ipv4 = '(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))';
-    protected $ipv6full = '([0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4}){7})'; // 1:1:1:1:1:1:1:1
+    protected $ipv6full = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})'; // 1:1:1:1:1:1:1:1
     protected $ipv6null = '(::)'; // '::'
     protected $ipv6leading = '(::[0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6})'; // ::1:1:1:1:1:1:1
-    protected $ipv6mid = '(([0-9A-Fa-f]{1,4})?(:[0-9A-Fa-f]{1,4}){0,5}:(:[0-9A-Fa-f]{1,4}){1,6}))'; // 1:1:1::1:1:1
+    protected $ipv6mid = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,5}:(:[0-9A-Fa-f]{1,4}){1,6})'; // 1:1:1::1:1:1
     protected $ipv6trailing = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6}::)'; // 1:1:1:1:1:1:1::
     protected $ip = join('|', array($ipv4, $ipv6full, $ipv6null, $ipv6leading, $ipv6mid, $ipv6trailing));
     protected $patterns = array(
