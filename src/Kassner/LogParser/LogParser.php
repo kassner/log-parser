@@ -7,18 +7,17 @@ class LogParser
 
     static protected $defaultFormat = '%h %l %u %t "%r" %>s %b';
     protected $pcreFormat;
-    protected $ipv4 = '(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))';
-    protected $ipv6full = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})'; // 1:1:1:1:1:1:1:1
-    protected $ipv6null = '(::)'; // '::'
-    protected $ipv6leading = '(::[0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6})'; // ::1:1:1:1:1:1:1
-    protected $ipv6mid = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,5}:(:[0-9A-Fa-f]{1,4}){1,6})'; // 1:1:1::1:1:1
-    protected $ipv6trailing = '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6}::)'; // 1:1:1:1:1:1:1::
-    protected $iparray = array($ipv4, $ipv6full, $ipv6null, $ipv6leading, $ipv6mid, $ipv6trailing);
+    protected $iparray = array(
+        'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))',
+        'ipv6full' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})', // 1:1:1:1:1:1:1:1
+        'ipv6null' => '(::)', // '::'
+        'ipv6leading' => '(::[0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6})', // ::1:1:1:1:1:1:1
+        'ipv6mid' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,5}:(:[0-9A-Fa-f]{1,4}){1,6})', // 1:1:1::1:1:1
+        'ipv6trailing' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6}::)' // 1:1:1:1:1:1:1::
+    );
     protected $ip = join('|', $iparray);
     protected $patterns = array(
         '%%' => '(?P<percent>\%)',
-        '%a' => '(?P<remoteIp>' . $ip . ')',
-        '%A' => '(?P<localIp>' . $ip . ')',
         '%h' => '(?P<host>[a-zA-Z0-9\-\._:]+)',
         '%l' => '(?P<logname>(?:-|[\w-]+))',
         '%m' => '(?P<requestMethod>OPTIONS|GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT|PATCH|PROPFIND)',
@@ -37,6 +36,8 @@ class LogParser
         '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.*?)',
         '%D' => '(?P<timeServeRequest>[0-9]+)',
     );
+    $patterns['%a'] = '(?P<remoteIp>' . $ip . ')';
+    $patterns['%A'] = '(?P<localIp>' . $ip . ')';
 
     /**
      * @return string
