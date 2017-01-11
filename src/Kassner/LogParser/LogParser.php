@@ -40,7 +40,6 @@ class LogParser
 
     public function __construct($format = null)
     {
-        $this->setFormat($format ?: self::getDefaultFormat());
         // Set IPv4 & IPv6 recognition patterns 
         $iparray = array(
             'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))',
@@ -53,6 +52,7 @@ class LogParser
         $ip = join('|', $iparray);
         $this->patterns['%a'] = '(?P<remoteIp>' . $ip . ')';
         $this->patterns['%A'] = '(?P<localIp>' . $ip . ')';
+        $this->setFormat($format ?: self::getDefaultFormat());
     }
 
     public function addPattern($placeholder, $pattern)
