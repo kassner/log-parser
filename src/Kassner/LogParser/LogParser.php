@@ -31,9 +31,17 @@ class LogParser
     );
 
     /**
-     * Constructor is used to set IPv4 & IPv6 recognition patterns 
+     * @return string
      */
-    public function __construct() {
+    public static function getDefaultFormat()
+    {
+        return self::$defaultFormat;
+    }
+
+    public function __construct($format = null)
+    {
+        $this->setFormat($format ?: self::getDefaultFormat());
+        // Set IPv4 & IPv6 recognition patterns 
         $iparray = array(
             'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))',
             'ipv6full' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})', // 1:1:1:1:1:1:1:1
@@ -45,19 +53,6 @@ class LogParser
         $ip = join('|', $iparray);
         $this->patterns['%a'] = '(?P<remoteIp>' . $ip . ')';
         $this->patterns['%A'] = '(?P<localIp>' . $ip . ')';
-    }
-
-    /**
-     * @return string
-     */
-    public static function getDefaultFormat()
-    {
-        return self::$defaultFormat;
-    }
-
-    public function __construct($format = null)
-    {
-        $this->setFormat($format ?: self::getDefaultFormat());
     }
 
     public function addPattern($placeholder, $pattern)
