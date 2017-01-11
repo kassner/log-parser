@@ -40,7 +40,7 @@ class LogParser
 
     public function __construct($format = null)
     {
-        $this->setFormat($format ?: self::getDefaultFormat());
+        $this->setFormat($format ? $format : self::getDefaultFormat());
     }
 
     public function addPattern($placeholder, $pattern)
