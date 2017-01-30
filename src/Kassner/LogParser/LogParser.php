@@ -9,8 +9,8 @@ class LogParser
     protected $pcreFormat;
     protected $patterns = array(
         '%%' => '(?P<percent>\%)',
-        '%a' => '(?P<remoteIp>(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|([0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4}){7})|(([0-9A-Fa-f]{1,4})?(:[0-9A-Fa-f]{1,4}){0,7}:(:[0-9A-Fa-f]{1,4}){1,7}))',
-        '%A' => '(?P<localIp>(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|([0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4}){7})|(([0-9A-Fa-f]{1,4})?(:[0-9A-Fa-f]{1,4}){0,7}:(:[0-9A-Fa-f]{1,4}){1,7}))',
+        '%a' => '(?P<remoteIp>)',
+        '%A' => '(?P<localIp>)',
         '%h' => '(?P<host>[a-zA-Z0-9\-\._:]+)',
         '%l' => '(?P<logname>(?:-|[\w-]+))',
         '%m' => '(?P<requestMethod>OPTIONS|GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT|PATCH|PROPFIND)',
@@ -40,6 +40,18 @@ class LogParser
 
     public function __construct($format = null)
     {
+        // Set IPv4 & IPv6 recognition patterns 
+        $iparray = array(
+            'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))',
+            'ipv6full' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})', // 1:1:1:1:1:1:1:1
+            'ipv6null' => '(::)',
+            'ipv6leading' => '(:(:[0-9A-Fa-f]{1,4}){1,7})', // ::1:1:1:1:1:1:1
+            'ipv6mid' => '(([0-9A-Fa-f]{1,4}:){1,6}(:[0-9A-Fa-f]{1,4}){1,6})', // 1:1:1::1:1:1
+            'ipv6trailing' => '(([0-9A-Fa-f]{1,4}:){1,7}:)' // 1:1:1:1:1:1:1::
+        );
+        $ip = join('|', $iparray);
+        $this->patterns['%a'] = '(?P<remoteIp>' . $ip . ')';
+        $this->patterns['%A'] = '(?P<localIp>' . $ip . ')';
         $this->setFormat($format ?: self::getDefaultFormat());
     }
 
