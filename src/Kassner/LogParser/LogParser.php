@@ -56,8 +56,8 @@ class LogParser
             'ipv6mid' => '(([0-9A-Fa-f]{1,4}:){1,6}(:[0-9A-Fa-f]{1,4}){1,6})', // 1:1:1::1:1:1
             'ipv6trailing' => '(([0-9A-Fa-f]{1,4}:){1,7}:)', // 1:1:1:1:1:1:1::
         ));
-        $this->patterns['%a'] = '(?P<remoteIp>' . $ipPatterns . ')';
-        $this->patterns['%A'] = '(?P<localIp>' . $ipPatterns . ')';
+        $this->patterns['%a'] = '(?P<remoteIp>'.$ipPatterns.')';
+        $this->patterns['%A'] = '(?P<localIp>'.$ipPatterns.')';
         $this->setFormat($format ?: self::getDefaultFormat());
     }
 
