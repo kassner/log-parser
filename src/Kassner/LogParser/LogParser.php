@@ -2,10 +2,14 @@
 
 namespace Kassner\LogParser;
 
+/**
+ * Parses webserver logs into PHP readable objects.
+ *
+ * @author Rafael Kassner <kassner@gmail.com>
+ */
 class LogParser
 {
-
-    static protected $defaultFormat = '%h %l %u %t "%r" %>s %b';
+    protected static $defaultFormat = '%h %l %u %t "%r" %>s %b';
     protected $pcreFormat;
     protected $patterns = array(
         '%%' => '(?P<percent>\%)',
@@ -38,28 +42,37 @@ class LogParser
         return self::$defaultFormat;
     }
 
+    /**
+     * @param string $format
+     */
     public function __construct($format = null)
     {
-        // Set IPv4 & IPv6 recognition patterns 
-        $iparray = array(
+        // Set IPv4 & IPv6 recognition patterns
+        $ipPatterns = implode('|', array(
             'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))',
             'ipv6full' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})', // 1:1:1:1:1:1:1:1
             'ipv6null' => '(::)',
             'ipv6leading' => '(:(:[0-9A-Fa-f]{1,4}){1,7})', // ::1:1:1:1:1:1:1
             'ipv6mid' => '(([0-9A-Fa-f]{1,4}:){1,6}(:[0-9A-Fa-f]{1,4}){1,6})', // 1:1:1::1:1:1
-            'ipv6trailing' => '(([0-9A-Fa-f]{1,4}:){1,7}:)' // 1:1:1:1:1:1:1::
-        );
-        $ip = join('|', $iparray);
-        $this->patterns['%a'] = '(?P<remoteIp>' . $ip . ')';
-        $this->patterns['%A'] = '(?P<localIp>' . $ip . ')';
+            'ipv6trailing' => '(([0-9A-Fa-f]{1,4}:){1,7}:)', // 1:1:1:1:1:1:1::
+        ));
+        $this->patterns['%a'] = '(?P<remoteIp>' . $ipPatterns . ')';
+        $this->patterns['%A'] = '(?P<localIp>' . $ipPatterns . ')';
         $this->setFormat($format ?: self::getDefaultFormat());
     }
 
+    /**
+     * @param string $placeholder
+     * @param string $pattern
+     */
     public function addPattern($placeholder, $pattern)
     {
         $this->patterns[$placeholder] = $pattern;
     }
 
+    /**
+     * @param string $format
+     */
     public function setFormat($format)
     {
         // strtr won't work for "complex" header patterns
@@ -74,10 +87,12 @@ class LogParser
     }
 
     /**
-     * Parses one single log line
+     * Parses one single log line.
      *
      * @param string $line
+     *
      * @return \stdClass
+     *
      * @throws FormatException
      */
     public function parse($line)
@@ -99,9 +114,11 @@ class LogParser
         return $entry;
     }
 
+    /**
+     * @return string
+     */
     public function getPCRE()
     {
         return (string) $this->pcreFormat;
     }
-
 }

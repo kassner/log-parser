@@ -10,7 +10,6 @@ use Kassner\LogParser\LogParser;
  */
 class PercentTest extends \PHPUnit_Framework_TestCase
 {
-
     protected $parser = null;
 
     protected function setUp()
@@ -45,7 +44,7 @@ class PercentTest extends \PHPUnit_Framework_TestCase
     public function successProvider()
     {
         return array(
-            array('%')
+            array('%'),
         );
     }
 
@@ -56,8 +55,7 @@ class PercentTest extends \PHPUnit_Framework_TestCase
             array('1'),
             array('dummy 1234'),
             array('lala'),
-            array('-')
+            array('-'),
         );
     }
-
 }

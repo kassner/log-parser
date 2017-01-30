@@ -11,7 +11,6 @@ use Kassner\Tests\LogParser\Provider\HostName as HostNameProvider;
  */
 class CanonicalServerNameTest extends HostNameProvider
 {
-
     protected $parser = null;
 
     protected function setUp()
@@ -42,5 +41,4 @@ class CanonicalServerNameTest extends HostNameProvider
     {
         $this->parser->parse($line);
     }
-
 }

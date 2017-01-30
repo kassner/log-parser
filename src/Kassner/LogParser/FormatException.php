@@ -4,5 +4,4 @@ namespace Kassner\LogParser;
 
 class FormatException extends \Exception
 {
-    
 }

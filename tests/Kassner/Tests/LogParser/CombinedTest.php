@@ -6,10 +6,9 @@ use Kassner\LogParser\LogParser;
 
 class CombinedTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testCombinedFormat()
     {
-        $parser = new LogParser("%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"");
+        $parser = new LogParser('%h %l %u %t "%r" %>s %O "%{Referer}i" "%{User-Agent}i"');
         $entry = $parser->parse('66.249.74.132 - - [10/Sep/2013:15:50:06 +0000] "GET /electronics/cameras/accessories/universal-camera-charger HTTP/1.1" 200 12347 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"');
 
         $this->assertEquals('66.249.74.132', $entry->host);
@@ -22,5 +21,4 @@ class CombinedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('-', $entry->HeaderReferer);
         $this->assertEquals('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)', $entry->HeaderUserAgent);
     }
-
 }

@@ -11,7 +11,6 @@ use Kassner\Tests\LogParser\Provider\HostName as HostNameProvider;
  */
 class ServerNameTest extends HostNameProvider
 {
-
     protected $parser = null;
 
     protected function setUp()
@@ -43,5 +42,4 @@ class ServerNameTest extends HostNameProvider
         $this->markTestIncomplete('This test has not been implemented yet.');
         $this->parser->parse($line);
     }
-
 }

@@ -1,14 +1,26 @@
 language: php
+
 php:
   - 5.3
   - 5.4
   - 5.5
   - 5.6
   - 7.0
+  - 7.1
   - hhvm
+
 before_script:
-  - wget http://getcomposer.org/composer.phar
-  - php composer.phar install
+  - composer install --dev --no-interaction --no-progress --optimize-autoloader
+
+script:
+  - vendor/bin/phpunit --verbose
+  - vendor/bin/php-cs-fixer fix src --diff --dry-run -v --level=symfony
+  - vendor/bin/php-cs-fixer fix tests --diff --dry-run -v --level=symfony
+  - vendor/bin/phpmd src xml codesize,unusedcode,naming,design
+  - vendor/bin/phpmd tests xml codesize,unusedcode,naming,design
+  - vendor/bin/phpcpd src
+  - vendor/bin/phpcpd tests
+
 matrix:
   allow_failures:
     - php: hhvm

@@ -4,7 +4,6 @@ namespace Kassner\Tests\LogParser\Provider;
 
 class PositiveInteger extends \PHPUnit_Framework_TestCase
 {
-
     public function successProvider()
     {
         return array(
@@ -29,5 +28,4 @@ class PositiveInteger extends \PHPUnit_Framework_TestCase
             array('-0'),
         );
     }
-
 }

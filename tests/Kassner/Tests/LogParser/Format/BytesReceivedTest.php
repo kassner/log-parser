@@ -11,7 +11,6 @@ use Kassner\Tests\LogParser\Provider\PositiveInteger as PositiveIntegerProvider;
  */
 class BytesReceivedTest extends PositiveIntegerProvider
 {
-
     protected $parser = null;
 
     protected function setUp()
@@ -42,5 +41,4 @@ class BytesReceivedTest extends PositiveIntegerProvider
     {
         $this->parser->parse($line);
     }
-
 }

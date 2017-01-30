@@ -6,10 +6,9 @@ use Kassner\LogParser\LogParser;
 
 class RefererTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testFormat()
     {
-        $parser = new LogParser("%{Referer}i -> %U");
+        $parser = new LogParser('%{Referer}i -> %U');
 
         $entry = $parser->parse('- -> /index.php');
         $this->assertEquals('/index.php', $entry->URL);
@@ -23,5 +22,4 @@ class RefererTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/robots.txt', $entry->URL);
         $this->assertEquals('-', $entry->HeaderReferer);
     }
-
 }

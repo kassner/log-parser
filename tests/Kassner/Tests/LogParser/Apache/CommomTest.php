@@ -6,10 +6,9 @@ use Kassner\LogParser\LogParser;
 
 class CommomTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testFormat()
     {
-        $parser = new LogParser("%h %l %u %t \"%r\" %>s %O");
+        $parser = new LogParser('%h %l %u %t "%r" %>s %O');
 
         $entry = $parser->parse('177.3.137.13 - - [11/Sep/2013:22:46:30 +0000] "GET / HTTP/1.1" 200 9726');
         $this->assertEquals('177.3.137.13', $entry->host);
@@ -38,5 +37,4 @@ class CommomTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('503', $entry->status);
         $this->assertEquals('1041', $entry->sentBytes);
     }
-
 }

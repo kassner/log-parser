@@ -11,7 +11,6 @@ use Kassner\Tests\LogParser\Provider\IpAddress as IpAddressProvider;
  */
 class LocalIpAddressTest extends IpAddressProvider
 {
-
     protected $parser = null;
 
     protected function setUp()
@@ -42,5 +41,4 @@ class LocalIpAddressTest extends IpAddressProvider
     {
         $this->parser->parse($line);
     }
-
 }

@@ -4,7 +4,6 @@ namespace Kassner\Tests\LogParser\Provider;
 
 class IpAddress extends \PHPUnit_Framework_TestCase
 {
-
     public function successProvider()
     {
         return array(
@@ -70,5 +69,4 @@ class IpAddress extends \PHPUnit_Framework_TestCase
             array('fff1:ffff2:fff3:fff4:fff5:fff6:fff7:fff8'),
         );
     }
-
 }

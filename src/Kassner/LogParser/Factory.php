@@ -4,9 +4,8 @@ namespace Kassner\LogParser;
 
 class Factory
 {
-
     /**
-     * Creates a LogParser instance
+     * Creates a LogParser instance.
      *
      * @return \Kassner\LogParser\LogParser
      */
@@ -14,5 +13,4 @@ class Factory
     {
         return new LogParser();
     }
-
 }
