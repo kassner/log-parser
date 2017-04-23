@@ -101,7 +101,7 @@ class LogParser
             throw new FormatException($line);
         }
 
-        $entry = new \stdClass();
+        $entry = $this->createEntry();
 
         foreach (array_filter(array_keys($matches), 'is_string') as $key) {
             if ('time' === $key && true !== $stamp = strtotime($matches[$key])) {
@@ -112,6 +112,14 @@ class LogParser
         }
 
         return $entry;
+    }
+
+    /**
+     * @return \stdClass
+     */
+    protected function createEntry()
+    {
+        return new \stdClass();
     }
 
     /**
