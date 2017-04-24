@@ -7,7 +7,6 @@ use Kassner\Tests\LogParser\Entry\Fake as FakeEntry;
 
 class CreateEntryTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testCreateEnty()
     {
         $parser = new LogParser('%h');
@@ -28,5 +27,4 @@ class CreateEntryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Kassner\Tests\LogParser\Entry\Fake', $entry);
         $this->assertEquals($entry->host, '66.249.74.132');
     }
-
 }
