@@ -1,4 +1,5 @@
 /vendor/
 /nbproject/
 .DS_Store
+.idea
 composer.lock
