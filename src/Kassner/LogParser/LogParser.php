@@ -32,6 +32,7 @@ class LogParser
         '%I' => '(?P<receivedBytes>[0-9]+)',
         '\%\{(?P<name>[a-zA-Z]+)(?P<name2>[-]?)(?P<name3>[a-zA-Z]+)\}i' => '(?P<Header\\1\\3>.*?)',
         '%D' => '(?P<timeServeRequest>[0-9]+)',
+        '%S' => '(?P<scheme>http|https)',
     );
 
     /**
