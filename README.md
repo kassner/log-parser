@@ -76,6 +76,7 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | N | %q | - | The query string (prepended with a ? if a query string exists, otherwise an empty string) |
 | Y | %r | request | First line of request |
 | N | %R | - | The handler generating the response (if any). |
+| X | %S | scheme | This is `nginx` specific: https://nginx.org/en/docs/http/ngx_http_core_module.html#var_scheme |
 | N | %s | - | Status. For requests that got internally redirected, this is the status of the *original* request --- %>s for the last. |
 | X | %T | requestTime | The time taken to serve the request, in seconds. This option is not consistent, Apache won't inform the milisecond part. |
 | Y | %t | time | Time the request was received (standard english format) |
