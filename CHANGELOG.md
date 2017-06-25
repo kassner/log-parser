@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 -
 
+## [1.3.1] - 2017-06-25
+### Added
+- Tests for issue #30
+### Fixed
+- `%u` was not matching usernames with dots (issue #30)
+
 ## [1.3.0] - 2017-04-24
 ### Added
 - Now we have a change log!
