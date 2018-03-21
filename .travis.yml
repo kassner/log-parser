@@ -14,8 +14,8 @@ before_script:
 
 script:
   - vendor/bin/phpunit --verbose
-  - vendor/bin/php-cs-fixer fix src --diff --dry-run -v --level=symfony
-  - vendor/bin/php-cs-fixer fix tests --diff --dry-run -v --level=symfony
+  - vendor/bin/php-cs-fixer fix src --diff --dry-run -v --rules=@Symfony
+  - vendor/bin/php-cs-fixer fix tests --diff --dry-run -v --rules=@Symfony
   - vendor/bin/phpmd src xml codesize,unusedcode,naming,design
   - vendor/bin/phpmd tests xml codesize,unusedcode,naming,design
   - vendor/bin/phpcpd src

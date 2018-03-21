@@ -25,6 +25,6 @@
         "phpunit/phpunit": "~4.4",
         "sebastian/phpcpd": "~2.0",
         "phpmd/phpmd": "~2.1",
-        "fabpot/php-cs-fixer": "^1.12"
+        "friendsofphp/php-cs-fixer": "^2.11"
     }
 }
