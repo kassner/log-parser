@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Partial HTTP 2 support within `%H` and `%r`
 ### Modified
 - Update supported PHP versions (PHP5.6+ only, no HHVM)
 

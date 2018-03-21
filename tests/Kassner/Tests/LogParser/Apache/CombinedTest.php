@@ -65,4 +65,22 @@ class CombinedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('-', $entry->HeaderReferer);
         $this->assertEquals('-', $entry->HeaderUserAgent);
     }
+
+    public function testHttp2Format()
+    {
+        $parser = new LogParser('%h %l %u "%r" %>s %O "%{Referer}i" "%{User-Agent}i"');
+
+        $entry = $parser->parse('127.0.0.1 - - "GET / HTTP/2.0" 200 10701 "-" "curl/7.54.1"');
+        $this->assertEquals('127.0.0.1', $entry->host);
+        $this->assertEquals('-', $entry->logname);
+        $this->assertEquals('-', $entry->user);
+        // On my tests Apache2 returned %t empty for HTTP2 connections
+        // @see https://superuser.com/questions/1222569/apache2-http2-t-logformat-is-empty
+        $this->assertObjectNotHasAttribute('time', $entry);
+        $this->assertEquals('GET / HTTP/2.0', $entry->request);
+        $this->assertEquals('200', $entry->status);
+        $this->assertEquals('10701', $entry->sentBytes);
+        $this->assertEquals('-', $entry->HeaderReferer);
+        $this->assertEquals('curl/7.54.1', $entry->HeaderUserAgent);
+    }
 }

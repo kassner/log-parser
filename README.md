@@ -65,7 +65,7 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | Y | %D | timeServeRequest | The time taken to serve the request, in microseconds. |
 | N | %f | - | Filename |
 | Y | %h | host |Remote host |
-| N | %H | - |The request protocol |
+| X | %H | - |The request protocol (this is Apache specific) |
 | Y | %I | receivedBytes | Bytes received, including request and headers, cannot be zero. You need to enable mod_logio to use this. |
 | N | %k | - | Number of keepalive requests handled on this connection. Interesting if KeepAlive is being used, so that, for example, a '1' means the first keepalive request after the initial one, '2' the second, etc...; otherwise this is always 0 (Y indicating the initial request). Available in versions 2.2.11 and later. |
 | Y | %l | logname | Remote logname (from identd, if supplied). This will return a dash unless mod_ident is present and IdentityCheck is set On. |
