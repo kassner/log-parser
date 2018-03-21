@@ -6,8 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Modified
-- Remove PHP 5.3 from Travis
-- Add PHP 7.2 from Travis
+- Update supported PHP versions (PHP5.6+ only, no HHVM)
 
 ## [1.3.1] - 2017-06-25
 ### Added
