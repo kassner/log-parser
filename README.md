@@ -57,7 +57,7 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | Supported? | Format String | Property name | Description |
 |:----------:|:-------------:|---------------|-------------|
 | Y | %% | percent |The percent sign |
-| Y | %> | status |status |
+| Y | %>s | status |status |
 | Y | %A | localIp |Local IP-address |
 | Y | %a | remoteIp |Remote IP-address |
 | N | %B | - |Size of response in bytes, excluding HTTP headers. |
