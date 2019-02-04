@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.5.0] - 2019-02-04
 ### Added
-- PHP 7.3/PRCE2 support
+- PHP 7.3/PCRE2 support
 
 ## [1.4.0] - 2018-03-21
 ### Added
