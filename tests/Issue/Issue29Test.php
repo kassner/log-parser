@@ -4,7 +4,7 @@ namespace Kassner\Teste\LogParser\Issue;
 
 use Kassner\LogParser\LogParser;
 
-class Issue29Test extends \PHPUnit_Framework_TestCase
+class Issue29Test extends \PHPUnit\Framework\TestCase
 {
     public function testAuthUserWithDots()
     {

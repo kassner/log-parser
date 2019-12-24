@@ -8,17 +8,17 @@ use Kassner\LogParser\LogParser;
  * @format %S
  * @description Scheme
  */
-class SchemeTest extends \PHPUnit_Framework_TestCase
+class SchemeTest extends \PHPUnit\Framework\TestCase
 {
     protected $parser = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new LogParser();
         $this->parser->setFormat('%S');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->parser = null;
     }
@@ -33,11 +33,11 @@ class SchemeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Kassner\LogParser\FormatException
      * @dataProvider invalidProvider
      */
     public function testInvalid($line)
     {
+        $this->expectException(\Kassner\LogParser\FormatException::class);
         $this->parser->parse($line);
     }
 

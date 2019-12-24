@@ -2,7 +2,7 @@
 
 namespace Kassner\LogParser\Tests\Provider;
 
-class IpAddress extends \PHPUnit_Framework_TestCase
+class IpAddress extends \PHPUnit\Framework\TestCase
 {
     public function successProvider()
     {
