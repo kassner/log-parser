@@ -11,8 +11,7 @@ namespace Kassner\LogParser;
  */
 final class LogParser
 {
-    /** @var string */
-    private static $defaultFormat = '%h %l %u %t "%r" %>s %b';
+    const DEFAULT_FORMAT = '%h %l %u %t "%r" %>s %b';
 
     /** @var string */
     private $pcreFormat;
@@ -46,11 +45,6 @@ final class LogParser
     /** @var LogEntryFactoryInterface */
     private $factory;
 
-    public static function getDefaultFormat(): string
-    {
-        return self::$defaultFormat;
-    }
-
     public function __construct(string $format = null, LogEntryFactoryInterface $factory = null)
     {
         // Set IPv4 & IPv6 recognition patterns
@@ -64,7 +58,7 @@ final class LogParser
         ]);
         $this->patterns['%a'] = '(?P<remoteIp>'.$ipPatterns.')';
         $this->patterns['%A'] = '(?P<localIp>'.$ipPatterns.')';
-        $this->setFormat($format ?: self::getDefaultFormat());
+        $this->setFormat($format ?: self::DEFAULT_FORMAT);
         $this->factory = $factory ?: new SimpleLogEntryFactory();
     }
 
