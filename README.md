@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/kassner/log-parser.png?branch=master)](https://travis-ci.org/kassner/log-parser)
 
-## Install
+Parse your Apache/Nginx/Varnish/HAProxy logs into PHP objects to programatically handle the data.
 
-Using composer:
+## Install
 
 ```
 composer require kassner/log-parser:~2.0
@@ -12,25 +12,18 @@ composer require kassner/log-parser:~2.0
 
 ## Usage
 
-Instantiate the class:
-
 ```php
 $parser = new \Kassner\LogParser\LogParser();
-```
-
-Then parse the lines of your access log file:
-
-```php
 $lines = file('/var/log/apache2/access.log', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 foreach ($lines as $line) {
     $entry = $parser->parse($line);
 }
 ```
 
-The `$entry` object will hold all data parsed.
+The `$entry` object will hold all data parsed. If the line does not match the defined format, a `\Kassner\LogParser\FormatException` will be thrown.
 
 ```php
-object(Kassner\LogParser\LogEntry)#4 (8) {
+object(Kassner\LogParser\SimpleLogEntry)#4 (8) {
   ["host"]=>
   string(14) "193.191.216.76"
   ["logname"]=>
@@ -50,14 +43,18 @@ object(Kassner\LogParser\LogEntry)#4 (8) {
 }
 ```
 
+## Customizations
+
+### Log format
+
 You may customize the log format (by default it matches the [Apache common log format](https://httpd.apache.org/docs/2.2/en/logs.html#common))
 
 ```php
-# default Nginx format :
+# default Nginx format:
 $parser->setFormat('%h %l %u %t "%r" %>s %O "%{Referer}i" \"%{User-Agent}i"');
 ```
 
-## Supported format strings
+#### Supported format strings
 
 Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/en/mod/mod_log_config.html#formats) supported by Apache, and whether they are supported by the library :
 
@@ -103,33 +100,27 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 
 > Beware: You should really read the notes when using a option that is marked with a `X` on the `Supported?` column.
 
-## Exceptions
+### Entry object
 
-If a line does not match with the defined format, an `\Kassner\LogParser\FormatException` will be thrown.
-
-## Changing the entry object
-
-Previously it was possible to overwrite the entry object returned by overwriting the `createEntry` method. With strict types, this is no longer possible, so instead you have to use the newly created interfaces.
+Before `2.0.0` it was possible to overwrite the entry object returned by overwriting the `createEntry` method. With strict types, this is no longer possible, so instead you have to use the newly created interfaces.
 
 First, create two new classes, your entry object and a factory that is responsible of creating it:
 
 ```php
-
 class MyEntry implements \Kassner\LogParser\LogEntryInterface
 {
-
 }
 
 class MyEntryFactory implements \Kassner\LogParser\LogEntryFactoryInterface
 {
     public function create(array $data): \Kassner\LogParser\LogEntryInterface
     {
-        // @TODO implement your code here and return a instance of MyEntry
+        // @TODO implement your code here to return a instance of MyEntry
     }
 }
 ```
 
-And then provide the factory as the second argument in the `LogParser` constructor:
+And then provide the factory as the second argument to the `LogParser` constructor:
 
 ```php
 $factory = new MyEntryFactory();
