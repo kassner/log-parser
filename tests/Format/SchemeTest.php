@@ -43,20 +43,20 @@ class SchemeTest extends \PHPUnit\Framework\TestCase
 
     public function successProvider()
     {
-        return array(
-            array('http'),
-            array('https'),
-        );
+        return [
+            ['http'],
+            ['https'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array('http '),
-            array('ftp'),
-            array(''),
-            array('h2'),
-            array('1'),
-        );
+        return [
+            ['http '],
+            ['ftp'],
+            [''],
+            ['h2'],
+            ['1'],
+        ];
     }
 }

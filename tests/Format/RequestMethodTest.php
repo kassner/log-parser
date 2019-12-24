@@ -43,26 +43,26 @@ class RequestMethodTest extends \PHPUnit\Framework\TestCase
 
     public function successProvider()
     {
-        return array(
-            array('OPTIONS'),
-            array('GET'),
-            array('HEAD'),
-            array('POST'),
-            array('PUT'),
-            array('DELETE'),
-            array('TRACE'),
-            array('CONNECT'),
-        );
+        return [
+            ['OPTIONS'],
+            ['GET'],
+            ['HEAD'],
+            ['POST'],
+            ['PUT'],
+            ['DELETE'],
+            ['TRACE'],
+            ['CONNECT'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array('GET '),
-            array('OPTION'),
-            array(''),
-            array('GET/POST'),
-            array('1'),
-        );
+        return [
+            ['GET '],
+            ['OPTION'],
+            [''],
+            ['GET/POST'],
+            ['1'],
+        ];
     }
 }

@@ -43,19 +43,19 @@ class PercentTest extends \PHPUnit\Framework\TestCase
 
     public function successProvider()
     {
-        return array(
-            array('%'),
-        );
+        return [
+            ['%'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array('0'),
-            array('1'),
-            array('dummy 1234'),
-            array('lala'),
-            array('-'),
-        );
+        return [
+            ['0'],
+            ['1'],
+            ['dummy 1234'],
+            ['lala'],
+            ['-'],
+        ];
     }
 }

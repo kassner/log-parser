@@ -43,24 +43,24 @@ class RequestTimeTest extends \PHPUnit\Framework\TestCase
 
     public function successProvider()
     {
-        return array(
-            array('0.000'),
-            array('1.234'),
-            array('999.999'),
+        return [
+            ['0.000'],
+            ['1.234'],
+            ['999.999'],
             // apache provides %T without the milisecond part
-            array('3'),
-            array('0'),
-        );
+            ['3'],
+            ['0'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array('abc '),
-            array(null),
-            array(''),
-            array(' '),
-            array('-'),
-        );
+        return [
+            ['abc '],
+            [null],
+            [''],
+            [' '],
+            ['-'],
+        ];
     }
 }
