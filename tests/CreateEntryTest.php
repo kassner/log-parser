@@ -15,7 +15,7 @@ class CreateEntryTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(\stdClass::class, $entry);
     }
 
-    public function testCreateEntyMocked()
+    public function testCreateEntryMocked()
     {
         $mock = $this->getMockBuilder(\Kassner\LogParser\LogParser::class)
             ->setConstructorArgs(['%h'])

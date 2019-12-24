@@ -53,7 +53,6 @@ class ServeRequestTimeTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [''],
-            [null],
             ['abc'],
             [' '],
             ['-'],
