@@ -2,7 +2,7 @@
 
 namespace Kassner\LogParser\Tests\Provider;
 
-class PositiveInteger extends \PHPUnit_Framework_TestCase
+class PositiveInteger extends \PHPUnit\Framework\TestCase
 {
     public function successProvider()
     {

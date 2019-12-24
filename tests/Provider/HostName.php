@@ -2,7 +2,7 @@
 
 namespace Kassner\LogParser\Tests\Provider;
 
-class HostName extends \PHPUnit_Framework_TestCase
+class HostName extends \PHPUnit\Framework\TestCase
 {
     public function successProvider()
     {

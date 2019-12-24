@@ -13,13 +13,13 @@ class RemoteIpAddressTest extends IpAddressProvider
 {
     protected $parser = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new LogParser();
         $this->parser->setFormat('%a');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->parser = null;
     }
@@ -34,11 +34,11 @@ class RemoteIpAddressTest extends IpAddressProvider
     }
 
     /**
-     * @expectedException \Kassner\LogParser\FormatException
      * @dataProvider invalidProvider
      */
     public function testInvalid($line)
     {
+        $this->expectException(\Kassner\LogParser\FormatException::class);
         $this->parser->parse($line);
     }
 }

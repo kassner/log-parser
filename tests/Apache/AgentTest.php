@@ -4,7 +4,7 @@ namespace Kassner\LogParser\Tests\Apache;
 
 use Kassner\LogParser\LogParser;
 
-class AgentTest extends \PHPUnit_Framework_TestCase
+class AgentTest extends \PHPUnit\Framework\TestCase
 {
     public function testFormat()
     {

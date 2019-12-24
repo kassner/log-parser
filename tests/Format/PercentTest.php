@@ -8,17 +8,17 @@ use Kassner\LogParser\LogParser;
  * @format %%
  * @description The percent sign
  */
-class PercentTest extends \PHPUnit_Framework_TestCase
+class PercentTest extends \PHPUnit\Framework\TestCase
 {
     protected $parser = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new LogParser();
         $this->parser->setFormat('%%');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->parser = null;
     }
@@ -33,11 +33,11 @@ class PercentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Kassner\LogParser\FormatException
      * @dataProvider invalidProvider
      */
     public function testInvalid($line)
     {
+        $this->expectException(\Kassner\LogParser\FormatException::class);
         $this->parser->parse($line);
     }
 
