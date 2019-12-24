@@ -1,6 +1,6 @@
 <?php
 
-namespace Kassner\Tests\LogParser\Entry;
+namespace Kassner\LogParser\Tests\Entry;
 
 class Fake
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kassner\Tests\LogParser;
+namespace Kassner\LogParser\Tests;
 
 use Kassner\LogParser\LogParser;
 
