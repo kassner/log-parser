@@ -7,18 +7,18 @@
 Using composer:
 
 ```
-php composer.phar require kassner/log-parser:~1.0
+composer require kassner/log-parser:~2.0
 ```
 
 ## Usage
 
-Simply instantiate the class :
+Instantiate the class:
 
 ```php
 $parser = new \Kassner\LogParser\LogParser();
 ```
 
-And then parse the lines of your access log file :
+Then parse the lines of your access log file:
 
 ```php
 $lines = file('/var/log/apache2/access.log', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -27,20 +27,27 @@ foreach ($lines as $line) {
 }
 ```
 
-Where `$entry` object will hold all data parsed.
+The `$entry` object will hold all data parsed.
 
 ```php
-stdClass Object
-(
-    [host] => 193.191.216.76
-    [logname] => -
-    [user] => www-data
-    [stamp] => 1390794676
-    [time] => 27/Jan/2014:04:51:16 +0100
-    [request] => GET /wp-content/uploads/2013/11/whatever.jpg HTTP/1.1
-    [status] => 200
-    [responseBytes] => 58678
-)
+object(Kassner\LogParser\LogEntry)#4 (8) {
+  ["host"]=>
+  string(14) "193.191.216.76"
+  ["logname"]=>
+  string(1) "-"
+  ["user"]=>
+  string(8) "www-data"
+  ["stamp"]=>
+  int(1390794676)
+  ["time"]=>
+  string(26) "27/Jan/2014:04:51:16 +0100"
+  ["request"]=>
+  string(53) "GET /wp-content/uploads/2013/11/whatever.jpg HTTP/1.1"
+  ["status"]=>
+  string(3) "200"
+  ["responseBytes"]=>
+  string(5) "58678"
+}
 ```
 
 You may customize the log format (by default it matches the [Apache common log format](https://httpd.apache.org/docs/2.2/en/logs.html#common))
@@ -99,3 +106,35 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 ## Exceptions
 
 If a line does not match with the defined format, an `\Kassner\LogParser\FormatException` will be thrown.
+
+## Changing the entry object
+
+Previously it was possible to overwrite the entry object returned by overwriting the `createEntry` method. With strict types, this is no longer possible, so instead you have to use the newly created interfaces.
+
+First, create two new classes, your entry object and a factory that is responsible of creating it:
+
+```php
+
+class MyEntry implements \Kassner\LogParser\LogEntryInterface
+{
+
+}
+
+class MyEntryFactory implements \Kassner\LogParser\LogEntryFactoryInterface
+{
+    public function create(array $data): \Kassner\LogParser\LogEntryInterface
+    {
+        // @TODO implement your code here and return a instance of MyEntry
+    }
+}
+```
+
+And then provide the factory as the second argument in the `LogParser` constructor:
+
+```php
+$factory = new MyEntryFactory();
+$parser = new \Kassner\LogParser\LogParser(null, $factory);
+$entry = $parser->parse('193.191.216.76 - www-data [27/Jan/2014:04:51:16 +0100] "GET /wp-content/uploads/2013/11/whatever.jpg HTTP/1.1" 200 58678');
+```
+
+`$entry` will be an instance of `MyEntry`.

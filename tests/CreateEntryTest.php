@@ -3,7 +3,6 @@
 namespace Kassner\LogParser\Tests;
 
 use Kassner\LogParser\LogParser;
-use Kassner\LogParser\Tests\Entry\Fake as FakeEntry;
 
 class CreateEntryTest extends \PHPUnit\Framework\TestCase
 {
@@ -17,14 +16,9 @@ class CreateEntryTest extends \PHPUnit\Framework\TestCase
 
     public function testCreateEntryMocked()
     {
-        $mock = $this->getMockBuilder(\Kassner\LogParser\LogParser::class)
-            ->setConstructorArgs(['%h'])
-            ->setMethods(['createEntry'])
-            ->getMock();
-
-        $mock->expects($this->any())->method('createEntry')->willReturn(new FakeEntry());
-
-        $entry = $mock->parse('66.249.74.132');
+        $fakeFactory = new \Kassner\LogParser\Tests\Entry\FakeFactory();
+        $parser = new LogParser('%h', $fakeFactory);
+        $entry = $parser->parse('66.249.74.132');
 
         $this->assertInstanceOf(\Kassner\LogParser\Tests\Entry\Fake::class, $entry);
         $this->assertEquals($entry->host, '66.249.74.132');

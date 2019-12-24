@@ -38,12 +38,14 @@ class LogParser
         '%S' => '(?P<scheme>http|https)',
     ];
 
+    private $factory;
+
     public static function getDefaultFormat(): string
     {
         return self::$defaultFormat;
     }
 
-    public function __construct(string $format = null)
+    public function __construct(string $format = null, LogEntryFactoryInterface $factory = null)
     {
         // Set IPv4 & IPv6 recognition patterns
         $ipPatterns = implode('|', [
@@ -57,6 +59,7 @@ class LogParser
         $this->patterns['%a'] = '(?P<remoteIp>'.$ipPatterns.')';
         $this->patterns['%A'] = '(?P<localIp>'.$ipPatterns.')';
         $this->setFormat($format ?: self::getDefaultFormat());
+        $this->factory = $factory ?: new LogEntryFactory();
     }
 
     public function addPattern(string $placeholder, string $pattern): void
@@ -82,28 +85,13 @@ class LogParser
      *
      * @throws FormatException
      */
-    public function parse(string $line): \stdClass
+    public function parse(string $line): LogEntryInterface
     {
         if (!preg_match($this->pcreFormat, $line, $matches)) {
             throw new FormatException($line);
         }
 
-        $entry = $this->createEntry();
-
-        foreach (array_filter(array_keys($matches), 'is_string') as $key) {
-            if ('time' === $key && true !== $stamp = strtotime($matches[$key])) {
-                $entry->stamp = $stamp;
-            }
-
-            $entry->{$key} = $matches[$key];
-        }
-
-        return $entry;
-    }
-
-    protected function createEntry(): \stdClass
-    {
-        return new \stdClass();
+        return $this->factory->create($matches);
     }
 
     public function getPCRE(): string
