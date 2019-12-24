@@ -65,7 +65,7 @@ final class LogParser
         $this->patterns['%a'] = '(?P<remoteIp>'.$ipPatterns.')';
         $this->patterns['%A'] = '(?P<localIp>'.$ipPatterns.')';
         $this->setFormat($format ?: self::getDefaultFormat());
-        $this->factory = $factory ?: new LogEntryFactory();
+        $this->factory = $factory ?: new SimpleLogEntryFactory();
     }
 
     public function addPattern(string $placeholder, string $pattern): void
