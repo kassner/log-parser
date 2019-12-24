@@ -57,7 +57,6 @@ class RequestTimeTest extends \PHPUnit\Framework\TestCase
     {
         return [
             ['abc '],
-            [null],
             [''],
             [' '],
             ['-'],

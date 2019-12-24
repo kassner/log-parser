@@ -2,7 +2,8 @@
 
 namespace Kassner\LogParser\Tests\Entry;
 
-class Fake
+// @TODO use interfaces instead of extending stdClass
+class Fake extends \stdClass
 {
     public $host;
 }

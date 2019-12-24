@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kassner\LogParser;
 
 /**
@@ -36,18 +38,12 @@ class LogParser
         '%S' => '(?P<scheme>http|https)',
     ];
 
-    /**
-     * @return string
-     */
-    public static function getDefaultFormat()
+    public static function getDefaultFormat(): string
     {
         return self::$defaultFormat;
     }
 
-    /**
-     * @param string $format
-     */
-    public function __construct($format = null)
+    public function __construct(string $format = null)
     {
         // Set IPv4 & IPv6 recognition patterns
         $ipPatterns = implode('|', [
@@ -63,19 +59,12 @@ class LogParser
         $this->setFormat($format ?: self::getDefaultFormat());
     }
 
-    /**
-     * @param string $placeholder
-     * @param string $pattern
-     */
-    public function addPattern($placeholder, $pattern)
+    public function addPattern(string $placeholder, string $pattern): void
     {
         $this->patterns[$placeholder] = $pattern;
     }
 
-    /**
-     * @param string $format
-     */
-    public function setFormat($format)
+    public function setFormat(string $format): void
     {
         // strtr won't work for "complex" header patterns
         // $this->pcreFormat = strtr("#^{$format}$#", $this->patterns);
@@ -91,13 +80,9 @@ class LogParser
     /**
      * Parses one single log line.
      *
-     * @param string $line
-     *
-     * @return \stdClass
-     *
      * @throws FormatException
      */
-    public function parse($line)
+    public function parse(string $line): \stdClass
     {
         if (!preg_match($this->pcreFormat, $line, $matches)) {
             throw new FormatException($line);
@@ -116,18 +101,12 @@ class LogParser
         return $entry;
     }
 
-    /**
-     * @return \stdClass
-     */
-    protected function createEntry()
+    protected function createEntry(): \stdClass
     {
         return new \stdClass();
     }
 
-    /**
-     * @return string
-     */
-    public function getPCRE()
+    public function getPCRE(): string
     {
         return (string) $this->pcreFormat;
     }
