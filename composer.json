@@ -17,8 +17,13 @@
         "php": ">=5.3.4"
     },
     "autoload": {
-        "psr-0": {
-            "Kassner": "src"
+        "psr-4": {
+            "Kassner\\LogParser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kassner\\Tests\\LogParser\\": "tests/"
         }
     },
     "require-dev": {
