@@ -30,6 +30,19 @@
         "phpunit/phpunit": "~8.0",
         "sebastian/phpcpd": "^4.1",
         "phpmd/phpmd": "^2.8",
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "vimeo/psalm": "^3.7"
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit",
+            "vendor/bin/psalm",
+            "vendor/bin/php-cs-fixer fix src --diff --dry-run -v --rules=@Symfony",
+            "vendor/bin/php-cs-fixer fix tests --diff --dry-run -v --rules=@Symfony",
+            "vendor/bin/phpmd src xml codesize,unusedcode,naming,design",
+            "vendor/bin/phpmd tests xml codesize,unusedcode,naming,design",
+            "vendor/bin/phpcpd src",
+            "vendor/bin/phpcpd tests"
+        ]
     }
 }

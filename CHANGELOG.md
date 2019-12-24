@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Strict types
+- vimeo/psalm checks
 ### Modified
 - PSR-4 autoloading
 - Change tests namespace
