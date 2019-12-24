@@ -23,7 +23,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Kassner\\Tests\\LogParser\\": "tests/"
+            "Kassner\\LogParser\\Tests\\": "tests/"
         }
     },
     "require-dev": {

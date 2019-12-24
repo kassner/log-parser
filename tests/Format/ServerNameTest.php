@@ -1,9 +1,9 @@
 <?php
 
-namespace Kassner\Tests\LogParser\Format;
+namespace Kassner\LogParser\Tests\Format;
 
 use Kassner\LogParser\LogParser;
-use Kassner\Tests\LogParser\Provider\HostName as HostNameProvider;
+use Kassner\LogParser\Tests\Provider\HostName as HostNameProvider;
 
 /**
  * @format %V

@@ -1,9 +1,9 @@
 <?php
 
-namespace Kassner\Tests\LogParser;
+namespace Kassner\LogParser\Tests;
 
 use Kassner\LogParser\LogParser;
-use Kassner\Tests\LogParser\Entry\Fake as FakeEntry;
+use Kassner\LogParser\Tests\Entry\Fake as FakeEntry;
 
 class CreateEntryTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,7 +24,7 @@ class CreateEntryTest extends \PHPUnit_Framework_TestCase
         $entry = $mock->parse('66.249.74.132');
 
         // Not using \stdClass::class because it's available on PHP5.5+ only
-        $this->assertInstanceOf('\Kassner\Tests\LogParser\Entry\Fake', $entry);
+        $this->assertInstanceOf('\Kassner\LogParser\Tests\Entry\Fake', $entry);
         $this->assertEquals($entry->host, '66.249.74.132');
     }
 }

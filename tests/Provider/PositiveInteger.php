@@ -1,6 +1,6 @@
 <?php
 
-namespace Kassner\Tests\LogParser\Provider;
+namespace Kassner\LogParser\Tests\Provider;
 
 class PositiveInteger extends \PHPUnit_Framework_TestCase
 {

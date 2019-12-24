@@ -1,9 +1,9 @@
 <?php
 
-namespace Kassner\Tests\LogParser\Format;
+namespace Kassner\LogParser\Tests\Format;
 
 use Kassner\LogParser\LogParser;
-use Kassner\Tests\LogParser\Provider\IpAddress as IpAddressProvider;
+use Kassner\LogParser\Tests\Provider\IpAddress as IpAddressProvider;
 
 /**
  * @format %A

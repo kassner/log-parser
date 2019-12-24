@@ -1,9 +1,9 @@
 <?php
 
-namespace Kassner\Tests\LogParser\Format;
+namespace Kassner\LogParser\Tests\Format;
 
 use Kassner\LogParser\LogParser;
-use Kassner\Tests\LogParser\Provider\PositiveInteger as PositiveIntegerProvider;
+use Kassner\LogParser\Tests\Provider\PositiveInteger as PositiveIntegerProvider;
 
 /**
  * @format %I
