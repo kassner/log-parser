@@ -6,4 +6,6 @@ namespace Kassner\LogParser;
 
 class LogEntry extends \stdCLass implements LogEntryInterface
 {
+    /** @var int|null */
+    public $stamp;
 }

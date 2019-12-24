@@ -9,11 +9,16 @@ namespace Kassner\LogParser;
  *
  * @author Rafael Kassner <kassner@gmail.com>
  */
-class LogParser
+final class LogParser
 {
-    protected static $defaultFormat = '%h %l %u %t "%r" %>s %b';
-    protected $pcreFormat;
-    protected $patterns = [
+    /** @var string */
+    private static $defaultFormat = '%h %l %u %t "%r" %>s %b';
+
+    /** @var string */
+    private $pcreFormat;
+
+    /** @var string[] */
+    private $patterns = [
         '%%' => '(?P<percent>\%)',
         '%a' => '(?P<remoteIp>)',
         '%A' => '(?P<localIp>)',
@@ -38,6 +43,7 @@ class LogParser
         '%S' => '(?P<scheme>http|https)',
     ];
 
+    /** @var LogEntryFactoryInterface */
     private $factory;
 
     public static function getDefaultFormat(): string
