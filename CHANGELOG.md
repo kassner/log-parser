@@ -5,7 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
--
+### Added
+- Strict types
+### Modified
+- PSR-4 autoloading
+- Change tests namespace
+- Update PHP to 7.2+
+- Update dev dependencies
 
 ## [1.5.0] - 2019-02-04
 ### Added
