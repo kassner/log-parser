@@ -43,21 +43,21 @@ class RequestProtocolTest extends \PHPUnit\Framework\TestCase
 
     public function successProvider()
     {
-        return array(
-            array('HTTP/1.0'),
-            array('HTTP/1.1'),
-            array('HTTP/2.0'),
-        );
+        return [
+            ['HTTP/1.0'],
+            ['HTTP/1.1'],
+            ['HTTP/2.0'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array(''),
-            array('HTTP/1x0'),
-            array('HTTP/1x1'),
-            array('HTTP/2x0'),
-            array('HTTP/3.0'),
-        );
+        return [
+            [''],
+            ['HTTP/1x0'],
+            ['HTTP/1x1'],
+            ['HTTP/2x0'],
+            ['HTTP/3.0'],
+        ];
     }
 }

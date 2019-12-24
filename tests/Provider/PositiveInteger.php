@@ -6,26 +6,26 @@ class PositiveInteger extends \PHPUnit\Framework\TestCase
 {
     public function successProvider()
     {
-        return array(
-            array('1'),
-            array('1234'),
-            array('99999999'),
-            array('100000000000000000000000'),
-            array('0'),
-        );
+        return [
+            ['1'],
+            ['1234'],
+            ['99999999'],
+            ['100000000000000000000000'],
+            ['0'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array('-1'),
-            array('dummy 1234'),
-            array('lala'),
-            array('-'),
-            array('-100000000000000000000000'),
-            array('12.34'),
-            array('0.0'),
-            array('-0'),
-        );
+        return [
+            ['-1'],
+            ['dummy 1234'],
+            ['lala'],
+            ['-'],
+            ['-100000000000000000000000'],
+            ['12.34'],
+            ['0.0'],
+            ['-0'],
+        ];
     }
 }

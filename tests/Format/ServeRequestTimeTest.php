@@ -42,21 +42,21 @@ class ServeRequestTimeTest extends \PHPUnit\Framework\TestCase
 
     public function successProvider()
     {
-        return array(
-            array('2966894'),
-            array('4547567567'),
-            array('56867'),
-        );
+        return [
+            ['2966894'],
+            ['4547567567'],
+            ['56867'],
+        ];
     }
 
     public function invalidProvider()
     {
-        return array(
-            array(''),
-            array(null),
-            array('abc'),
-            array(' '),
-            array('-'),
-        );
+        return [
+            [''],
+            [null],
+            ['abc'],
+            [' '],
+            ['-'],
+        ];
     }
 }
