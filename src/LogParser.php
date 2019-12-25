@@ -91,7 +91,7 @@ final class LogParser
     }
 
     /**
-     * Replaces {{PATTERN_IP_ALL}} with.
+     * Replaces {{PATTERN_IP_ALL}} with the IPV4/6 patterns.
      */
     private function updateIpPatterns(): void
     {
