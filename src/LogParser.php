@@ -19,8 +19,8 @@ final class LogParser
     /** @var string[] */
     private $patterns = [
         '%%' => '(?P<percent>\%)',
-        '%a' => '(?P<remoteIp>)',
-        '%A' => '(?P<localIp>)',
+        '%a' => '(?P<remoteIp>{{PATTERN_IP_ALL}})',
+        '%A' => '(?P<localIp>{{PATTERN_IP_ALL}})',
         '%h' => '(?P<host>[a-zA-Z0-9\-\._:]+)',
         '%l' => '(?P<logname>(?:-|[\w-]+))',
         '%m' => '(?P<requestMethod>OPTIONS|GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT|PATCH|PROPFIND)',
@@ -47,17 +47,7 @@ final class LogParser
 
     public function __construct(string $format = null, LogEntryFactoryInterface $factory = null)
     {
-        // Set IPv4 & IPv6 recognition patterns
-        $ipPatterns = implode('|', [
-            'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))',
-            'ipv6full' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})', // 1:1:1:1:1:1:1:1
-            'ipv6null' => '(::)',
-            'ipv6leading' => '(:(:[0-9A-Fa-f]{1,4}){1,7})', // ::1:1:1:1:1:1:1
-            'ipv6mid' => '(([0-9A-Fa-f]{1,4}:){1,6}(:[0-9A-Fa-f]{1,4}){1,6})', // 1:1:1::1:1:1
-            'ipv6trailing' => '(([0-9A-Fa-f]{1,4}:){1,7}:)', // 1:1:1:1:1:1:1::
-        ]);
-        $this->patterns['%a'] = '(?P<remoteIp>'.$ipPatterns.')';
-        $this->patterns['%A'] = '(?P<localIp>'.$ipPatterns.')';
+        $this->updateIpPatterns();
         $this->setFormat($format ?: self::DEFAULT_FORMAT);
         $this->factory = $factory ?: new SimpleLogEntryFactory();
     }
@@ -65,6 +55,7 @@ final class LogParser
     public function addPattern(string $placeholder, string $pattern): void
     {
         $this->patterns[$placeholder] = $pattern;
+        $this->updateIpPatterns();
     }
 
     public function setFormat(string $format): void
@@ -97,5 +88,25 @@ final class LogParser
     public function getPCRE(): string
     {
         return (string) $this->pcreFormat;
+    }
+
+    /**
+     * Replaces {{PATTERN_IP_ALL}} with.
+     */
+    private function updateIpPatterns(): void
+    {
+        // Set IPv4 & IPv6 recognition patterns
+        $ipPatterns = implode('|', [
+            'ipv4' => '(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))',
+            'ipv6full' => '([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){7})', // 1:1:1:1:1:1:1:1
+            'ipv6null' => '(::)',
+            'ipv6leading' => '(:(:[0-9A-Fa-f]{1,4}){1,7})', // ::1:1:1:1:1:1:1
+            'ipv6mid' => '(([0-9A-Fa-f]{1,4}:){1,6}(:[0-9A-Fa-f]{1,4}){1,6})', // 1:1:1::1:1:1
+            'ipv6trailing' => '(([0-9A-Fa-f]{1,4}:){1,7}:)', // 1:1:1:1:1:1:1::
+        ]);
+
+        foreach ($this->patterns as &$value) {
+            $value = str_replace('{{PATTERN_IP_ALL}}', $ipPatterns, $value);
+        }
     }
 }
