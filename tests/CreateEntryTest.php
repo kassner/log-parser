@@ -6,14 +6,6 @@ use Kassner\LogParser\LogParser;
 
 class CreateEntryTest extends \PHPUnit\Framework\TestCase
 {
-    public function testCreateEntry()
-    {
-        $parser = new LogParser('%h');
-        $entry = $parser->parse('66.249.74.132');
-
-        $this->assertInstanceOf(\stdClass::class, $entry);
-    }
-
     public function testCreateEntryMocked()
     {
         $fakeFactory = new \Kassner\LogParser\Tests\Entry\FakeFactory();
