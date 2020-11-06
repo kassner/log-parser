@@ -28,5 +28,23 @@ jobs:
         run: |
           composer install --prefer-dist --no-progress
 
+      - name: Run psalm
+        run: php vendor/bin/psalm
+
       - name: Run PHPUnit
         run: php vendor/bin/phpunit --verbose
+
+      - name: Run phpmd
+        run: |
+          php vendor/bin/phpmd src xml codesize,unusedcode,naming,design
+          php vendor/bin/phpmd tests xml codesize,unusedcode,naming,design
+
+      - name: Run phpcpd
+        run: |
+          php vendor/bin/phpcpd src
+          php vendor/bin/phpcpd tests
+
+      - name: Run php-cs-fixer
+        run: |
+          php vendor/bin/php-cs-fixer fix src --diff --dry-run -v --rules=@Symfony
+          php vendor/bin/php-cs-fixer fix tests --diff --dry-run -v --rules=@Symfony
