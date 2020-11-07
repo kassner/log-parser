@@ -31,7 +31,7 @@
     },
     "scripts": {
         "test": [
-            "@composer bin all update"
+            "@composer bin all update",
             "vendor/bin/phpunit",
             "vendor/bin/psalm",
             "vendor/bin/php-cs-fixer fix src --diff --dry-run -v --rules=@Symfony",
