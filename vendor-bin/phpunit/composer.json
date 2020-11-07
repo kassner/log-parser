@@ -1,0 +1,9 @@
+{
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "phpunit/phpunit": "^8.5 || ^9.4"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}

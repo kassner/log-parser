@@ -1,0 +1,9 @@
+{
+    "require": {
+        "php": "^7.2",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
