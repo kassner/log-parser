@@ -94,7 +94,7 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | Y | %{Foobar}i | *Header | The contents of Foobar: header line(s) in the request sent to the server. Changes made by other modules (e.g. mod_headers) affect this. If you're interested in what the request header was prior to when most modules would have modified it, use mod_setenvif to copy the header into an internal environment variable and log that value with the %{VARNAME}e described above. |
 | N | %{Foobar}n | - | The contents of note Foobar from another module. |
 | N | %{Foobar}o | - | The contents of Foobar: header line(s) in the reply. |
-| N | %{format}p | - | The canonical port of the server serving the request or the server's actual port or the client's actual port. Valid formats are canonical, local, or remote. |
+| Y | %{format}p | *Port | The canonical port of the server serving the request or the server's actual port or the client's actual port. Valid formats are canonical, local, or remote. |
 | N | %{format}P | - | The process ID or thread id of the child that serviced the request. Valid formats are pid, tid, and hextid. hextid requires APR 1.2.0 or higher. |
 | N | %{format}t | - | The time, in the form given by format, which should be in strftime(3) format. (potentially localized) (This directive was %c in late versions of Apache 1.3, but this conflicted with the historical ssl %{var}c syntax.) |
 
