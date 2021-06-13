@@ -90,6 +90,7 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Kassner\LogParser\FormatException::class);
         $this->parser->parse($line);
     }
+
     /**
      * @dataProvider successProvider
      */
@@ -118,9 +119,9 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
      */
     public function testPortFormatSuccess($portType)
     {
-        $format = '%t "%r" %{' . $portType . '}p';
+        $format = '%t "%r" %{'.$portType.'}p';
         $this->parser->setFormat($format);
-        $entry= $this->parser->parse('[10/Sep/2013:15:50:06 +0000] "GET /electronics/cameras/accessories/universal-camera-charger HTTP/1.1" 8080');
+        $entry = $this->parser->parse('[10/Sep/2013:15:50:06 +0000] "GET /electronics/cameras/accessories/universal-camera-charger HTTP/1.1" 8080');
 
         $propertyName = sprintf('%sPort', $portType);
         $this->assertObjectHasAttribute($propertyName, $entry);
@@ -132,7 +133,7 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
      */
     public function testPortFormatInvalid($portType)
     {
-        $format = '%t "%r" %{' . $portType . '}p';
+        $format = '%t "%r" %{'.$portType.'}p';
         $this->parser->setFormat($format);
         $this->expectException(\Kassner\LogParser\FormatException::class);
         $this->parser->parse('[10/Sep/2013:15:50:06 +0000] "GET /electronics/cameras/accessories/universal-camera-charger HTTP/1.1" 8080');
@@ -143,7 +144,7 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
         return [
             ['443'],
             ['80'],
-            ['123423']
+            ['123423'],
         ];
     }
 
@@ -153,7 +154,7 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
             [''],
             ['Nan'],
             ['+Inf'],
-            ['1.6e-19']
+            ['1.6e-19'],
         ];
     }
 
