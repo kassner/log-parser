@@ -6,6 +6,7 @@ use Kassner\LogParser\LogParser;
 
 /**
  * @description Test the various port number format strings %p %{local}p, %{remote}p and %{canonical}p
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class PortNumbersTest extends \PHPUnit\Framework\TestCase
 {
