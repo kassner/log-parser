@@ -29,9 +29,9 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
         $this->parser->setFormat('%p');
         $entry = $this->parser->parse($line);
         $this->assertEquals($line, $entry->port);
-	$this->assertObjectNotHasAttribute('localPort', $entry);
-	$this->assertObjectNotHasAttribute('remotePort', $entry);
-	$this->assertObjectNotHasAttribute('canonicalPort', $entry);
+        $this->assertObjectNotHasAttribute('localPort', $entry);
+        $this->assertObjectNotHasAttribute('remotePort', $entry);
+        $this->assertObjectNotHasAttribute('canonicalPort', $entry);
     }
 
     /**
@@ -52,9 +52,9 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
         $this->parser->setFormat('%{local}p');
         $entry = $this->parser->parse($line);
         $this->assertEquals($line, $entry->localPort);
-	$this->assertObjectNotHasAttribute('port', $entry);
-	$this->assertObjectNotHasAttribute('remotePort', $entry);
-	$this->assertObjectNotHasAttribute('canonicalPort', $entry);
+        $this->assertObjectNotHasAttribute('port', $entry);
+        $this->assertObjectNotHasAttribute('remotePort', $entry);
+        $this->assertObjectNotHasAttribute('canonicalPort', $entry);
     }
 
     /**
@@ -75,9 +75,9 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
         $this->parser->setFormat('%{remote}p');
         $entry = $this->parser->parse($line);
         $this->assertEquals($line, $entry->remotePort);
-	$this->assertObjectNotHasAttribute('port', $entry);
-	$this->assertObjectNotHasAttribute('localPort', $entry);
-	$this->assertObjectNotHasAttribute('canonicalPort', $entry);
+        $this->assertObjectNotHasAttribute('port', $entry);
+        $this->assertObjectNotHasAttribute('localPort', $entry);
+        $this->assertObjectNotHasAttribute('canonicalPort', $entry);
     }
 
     /**
@@ -97,9 +97,9 @@ class PortNumbersTest extends \PHPUnit\Framework\TestCase
         $this->parser->setFormat('%{canonical}p');
         $entry = $this->parser->parse($line);
         $this->assertEquals($line, $entry->canonicalPort);
-	$this->assertObjectNotHasAttribute('port', $entry);
-	$this->assertObjectNotHasAttribute('localPort', $entry);
-	$this->assertObjectNotHasAttribute('remotePort', $entry);
+        $this->assertObjectNotHasAttribute('port', $entry);
+        $this->assertObjectNotHasAttribute('localPort', $entry);
+        $this->assertObjectNotHasAttribute('remotePort', $entry);
     }
 
     /**
