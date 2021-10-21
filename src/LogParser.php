@@ -88,7 +88,7 @@ final class LogParser
 
     public function getPCRE(): string
     {
-        return (string) $this->pcreFormat;
+        return $this->pcreFormat;
     }
 
     /**
