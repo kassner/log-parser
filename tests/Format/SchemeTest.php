@@ -6,6 +6,7 @@ use Kassner\LogParser\LogParser;
 
 /**
  * @format %S
+ *
  * @description Scheme
  */
 class SchemeTest extends \PHPUnit\Framework\TestCase

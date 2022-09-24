@@ -7,6 +7,7 @@ use Kassner\LogParser\Tests\Provider\IpAddress as IpAddressProvider;
 
 /**
  * @format %A
+ *
  * @description Local IP-address
  */
 class LocalIpAddressTest extends IpAddressProvider

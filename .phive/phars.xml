@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="phpcpd" version="^6.0.3" installed="6.0.3" location="./tools/phpcpd" copy="false"/>
+  <phar name="psalm" version="^5.0.0-beta1" installed="5.0.0-beta1" location="./tools/psalm" copy="false"/>
+  <phar name="php-cs-fixer" version="^3.11.0" installed="3.11.0" location="./tools/php-cs-fixer" copy="false"/>
+  <phar name="phpmd" version="^2.13.0" installed="2.13.0" location="./tools/phpmd" copy="false"/>
+  <phar name="phpunit" version="^9.5.24" installed="9.5.24" location="./tools/phpunit" copy="false"/>
+</phive>

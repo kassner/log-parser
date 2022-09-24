@@ -7,6 +7,7 @@ use Kassner\LogParser\Tests\Provider\PositiveInteger as PositiveIntegerProvider;
 
 /**
  * @format %I
+ *
  * @description Bytes received, including request and headers, cannot be zero. You need to enable mod_logio to use this.
  */
 class BytesReceivedTest extends PositiveIntegerProvider

@@ -7,6 +7,7 @@ use Kassner\LogParser\Tests\Provider\IpAddress as IpAddressProvider;
 
 /**
  * @format %a
+ *
  * @description Remote IP-address
  */
 class RemoteIpAddressTest extends IpAddressProvider

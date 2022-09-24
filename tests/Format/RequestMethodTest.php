@@ -6,6 +6,7 @@ use Kassner\LogParser\LogParser;
 
 /**
  * @format %m
+ *
  * @description The request method
  */
 class RequestMethodTest extends \PHPUnit\Framework\TestCase

@@ -7,6 +7,7 @@ use Kassner\LogParser\Tests\Provider\HostName as HostNameProvider;
 
 /**
  * @format %V
+ *
  * @description The server name according to the UseCanonicalName setting.
  */
 class ServerNameTest extends HostNameProvider

@@ -6,6 +6,7 @@ use Kassner\LogParser\LogParser;
 
 /**
  * @format %T
+ *
  * @description The request time
  */
 class RequestTimeTest extends \PHPUnit\Framework\TestCase

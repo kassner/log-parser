@@ -11,7 +11,7 @@ namespace Kassner\LogParser;
  */
 final class LogParser
 {
-    const DEFAULT_FORMAT = '%h %l %u %t "%r" %>s %b';
+    public const DEFAULT_FORMAT = '%h %l %u %t "%r" %>s %b';
 
     /** @var string */
     private $pcreFormat;
@@ -88,7 +88,7 @@ final class LogParser
 
     public function getPCRE(): string
     {
-        return (string) $this->pcreFormat;
+        return $this->pcreFormat;
     }
 
     /**

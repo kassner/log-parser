@@ -6,6 +6,7 @@ use Kassner\LogParser\LogParser;
 
 /**
  * @format %%
+ *
  * @description The percent sign
  */
 class PercentTest extends \PHPUnit\Framework\TestCase
