@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 -
 
+## [2.1.1] - 2023-07-18
+### Added
+- Run tests on PHP 8.2
+### Modified
+- Update PCRE pattern after LogParser::addPattern*(): https://github.com/kassner/log-parser/pull/60
+
+## [2.1.0] - 2021-06-13
+### Added
+- Add support for %{format}p format string: https://github.com/kassner/log-parser/pull/55
+### Modified
+- Replace TravisCI with GitHub Actions;
+
 ## [2.0.0] - 2020-01-05
 ### Added
 - Strict types
