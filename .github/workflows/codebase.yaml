@@ -22,7 +22,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
-          tools: composer, phpcpd, phpmd, phpunit, php-cs-fixer, psalm
+          tools: composer, phpcpd, phpmd, phpunit:9.6, php-cs-fixer, psalm
 
       - name: Install dependencies
         run: |
