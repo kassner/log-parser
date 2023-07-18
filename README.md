@@ -5,7 +5,7 @@ Parse your Apache/Nginx/Varnish/HAProxy logs into PHP objects to programatically
 ## Install
 
 ```
-composer require kassner/log-parser:~2.0
+composer require kassner/log-parser:~2.1
 ```
 
 ## Usage
@@ -97,6 +97,10 @@ Here is the full list of [log format strings](https://httpd.apache.org/docs/2.2/
 | N | %{format}t | - | The time, in the form given by format, which should be in strftime(3) format. (potentially localized) (This directive was %c in late versions of Apache 1.3, but this conflicted with the historical ssl %{var}c syntax.) |
 
 > Beware: You should really read the notes when using a option that is marked with a `X` on the `Supported?` column.
+
+### Custom formats
+
+See https://github.com/kassner/log-parser/issues/50#issuecomment-706707736
 
 ### Entry object
 
