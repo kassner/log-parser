@@ -11,7 +11,7 @@ use Kassner\LogParser\LogParser;
  */
 class SchemeTest extends \PHPUnit\Framework\TestCase
 {
-    protected $parser = null;
+    protected $parser;
 
     protected function setUp(): void
     {

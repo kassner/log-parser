@@ -9,7 +9,7 @@ use Kassner\LogParser\LogParser;
  */
 class ServeRequestTimeTest extends \PHPUnit\Framework\TestCase
 {
-    protected $parser = null;
+    protected $parser;
 
     protected function setUp(): void
     {
