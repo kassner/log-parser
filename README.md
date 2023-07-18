@@ -1,7 +1,5 @@
 # Web server access Log Parser
 
-[![Build Status](https://travis-ci.org/kassner/log-parser.png?branch=master)](https://travis-ci.org/kassner/log-parser)
-
 Parse your Apache/Nginx/Varnish/HAProxy logs into PHP objects to programatically handle the data.
 
 ## Install
