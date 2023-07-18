@@ -50,4 +50,22 @@ class CustomPatternTest extends IpAddressProvider
         $entry = $this->parser->parse('192.168.1.20 2001:aaaa:bbbb::cc00 "GET / HTTP/1.1"');
         $this->assertEquals('2001:aaaa:bbbb::cc00', $entry->loadBalancer);
     }
+
+    public function testAddPatternBeforeSetFormat()
+    {
+        $this->parser->addPattern('%Y', '(?P<test>[0-9]+)');
+        $this->parser->setFormat('%Y');
+
+        $entry = $this->parser->parse('123');
+        $this->assertEquals('123', $entry->test);
+    }
+
+    public function testAddPatternAfterSetFormat()
+    {
+        $this->parser->setFormat('%Y');
+        $this->parser->addPattern('%Y', '(?P<test>[0-9]+)');
+
+        $entry = $this->parser->parse('123');
+        $this->assertEquals('123', $entry->test);
+    }
 }

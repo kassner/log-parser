@@ -14,6 +14,9 @@ final class LogParser
     public const DEFAULT_FORMAT = '%h %l %u %t "%r" %>s %b';
 
     /** @var string */
+    private $format;
+
+    /** @var string */
     private $pcreFormat;
 
     /** @var string[] */
@@ -48,7 +51,6 @@ final class LogParser
 
     public function __construct(string $format = null, LogEntryFactoryInterface $factory = null)
     {
-        $this->updateIpPatterns();
         $this->setFormat($format ?: self::DEFAULT_FORMAT);
         $this->factory = $factory ?: new SimpleLogEntryFactory();
     }
@@ -56,20 +58,13 @@ final class LogParser
     public function addPattern(string $placeholder, string $pattern): void
     {
         $this->patterns[$placeholder] = $pattern;
-        $this->updateIpPatterns();
+        $this->updatePCREPattern();
     }
 
     public function setFormat(string $format): void
     {
-        // strtr won't work for "complex" header patterns
-        // $this->pcreFormat = strtr("#^{$format}$#", $this->patterns);
-        $expr = "#^{$format}$#";
-
-        foreach ($this->patterns as $pattern => $replace) {
-            $expr = preg_replace("/{$pattern}/", $replace, $expr);
-        }
-
-        $this->pcreFormat = $expr;
+        $this->format = $format;
+        $this->updatePCREPattern();
     }
 
     /**
@@ -89,6 +84,21 @@ final class LogParser
     public function getPCRE(): string
     {
         return $this->pcreFormat;
+    }
+
+    private function updatePCREPattern(): void
+    {
+        $this->updateIpPatterns();
+
+        // strtr won't work for "complex" header patterns
+        // $this->pcreFormat = strtr("#^{$format}$#", $this->patterns);
+        $expr = "#^{$this->format}$#";
+
+        foreach ($this->patterns as $pattern => $replace) {
+            $expr = preg_replace("/{$pattern}/", $replace, $expr);
+        }
+
+        $this->pcreFormat = $expr;
     }
 
     /**
