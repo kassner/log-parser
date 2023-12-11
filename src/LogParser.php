@@ -32,7 +32,7 @@ final class LogParser
         '\%\{(local|canonical|remote)\}p' => '(?P<\\1Port>\d+)',
         '%r' => '(?P<request>(?:(?:[A-Z]+) .+? HTTP/(1\.0|1\.1|2\.0))|-|)',
         '%t' => '\[(?P<time>\d{2}/(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/\d{4}:\d{2}:\d{2}:\d{2} (?:-|\+)\d{4})\]',
-        '%u' => '(?P<user>(?:-|[\w\-\.]+))',
+        '%u' => '(?P<user>(?:-|[\w\-\.@]+))',
         '%U' => '(?P<URL>.+?)',
         '%v' => '(?P<serverName>([a-zA-Z0-9]+)([a-z0-9.-]*))',
         '%V' => '(?P<canonicalServerName>([a-zA-Z0-9]+)([a-z0-9.-]*))',
