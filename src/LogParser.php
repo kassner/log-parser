@@ -16,7 +16,7 @@ final class LogParser
     /** @var string */
     private $format;
 
-    /** @var string */
+    /** @var non-empty-string */
     private $pcreFormat;
 
     /** @var string[] */
@@ -95,6 +95,7 @@ final class LogParser
         $expr = "#^{$this->format}$#";
 
         foreach ($this->patterns as $pattern => $replace) {
+            /** @var non-empty-string */
             $expr = preg_replace("/{$pattern}/", $replace, $expr);
         }
 
