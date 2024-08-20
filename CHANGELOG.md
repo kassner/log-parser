@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
--
+### Modified
+- Replace psalm with phpstan
 
 ## [2.1.1] - 2023-07-18
 ### Added

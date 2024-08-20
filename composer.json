@@ -29,7 +29,7 @@
     "scripts": {
         "test": [
             "tools/phpunit",
-            "tools/psalm",
+            "tools/phpstan",
             "tools/php-cs-fixer fix src --diff --dry-run -v --rules=@Symfony",
             "tools/php-cs-fixer fix tests --diff --dry-run -v --rules=@Symfony",
             "tools/phpmd src xml codesize,unusedcode,naming,design",

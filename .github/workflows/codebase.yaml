@@ -22,14 +22,14 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
-          tools: composer, phpcpd, phpmd, phpunit:9.6, php-cs-fixer, psalm
+          tools: composer, phpcpd, phpmd, phpunit:9.6, php-cs-fixer, phpstan
 
       - name: Install dependencies
         run: |
           composer install --prefer-dist --no-progress
 
-      - name: Run psalm
-        run: psalm
+      - name: Run phpstan
+        run: phpstan
 
       - name: Run PHPUnit
         run: phpunit --verbose
