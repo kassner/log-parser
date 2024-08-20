@@ -49,7 +49,7 @@ final class LogParser
     /** @var LogEntryFactoryInterface */
     private $factory;
 
-    public function __construct(string $format = null, LogEntryFactoryInterface $factory = null)
+    public function __construct(?string $format = null, ?LogEntryFactoryInterface $factory = null)
     {
         $this->setFormat($format ?: self::DEFAULT_FORMAT);
         $this->factory = $factory ?: new SimpleLogEntryFactory();
