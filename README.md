@@ -5,7 +5,7 @@ Parse your Apache/Nginx/Varnish/HAProxy logs into PHP objects to programatically
 ## Install
 
 ```
-composer require kassner/log-parser:~2.1
+composer require kassner/log-parser:~2.2
 ```
 
 ## Usage
