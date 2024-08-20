@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [2.2.0] - 2024-08-20
 ### Modified
 - Replace psalm with phpstan
 - Allow `-` values for `%O` and `%I`: https://github.com/kassner/log-parser/issues/66
+- Avoid `PHP Deprecated: Creation of dynamic property is deprecated` on PHP 8.2+: https://github.com/kassner/log-parser/pull/65
 
 ## [2.1.1] - 2023-07-18
 ### Added
