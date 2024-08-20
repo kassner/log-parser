@@ -3,14 +3,14 @@
 namespace Kassner\LogParser\Tests\Format;
 
 use Kassner\LogParser\LogParser;
-use Kassner\LogParser\Tests\Provider\PositiveInteger as PositiveIntegerProvider;
+use Kassner\LogParser\Tests\Provider\NullableInteger as NullableIntegerProvider;
 
 /**
  * @format %I
  *
  * @description Bytes received, including request and headers, cannot be zero. You need to enable mod_logio to use this.
  */
-class BytesReceivedTest extends PositiveIntegerProvider
+class BytesReceivedTest extends NullableIntegerProvider
 {
     protected $parser;
 

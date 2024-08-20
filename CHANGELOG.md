@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Modified
 - Replace psalm with phpstan
+- Allow `-` values for `%O` and `%I`: https://github.com/kassner/log-parser/issues/66
 
 ## [2.1.1] - 2023-07-18
 ### Added
