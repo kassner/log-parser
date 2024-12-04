@@ -48,3 +48,5 @@ jobs:
         run: |
           php-cs-fixer fix src --diff --dry-run -v --rules=@Symfony
           php-cs-fixer fix tests --diff --dry-run -v --rules=@Symfony
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
